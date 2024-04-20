@@ -1,0 +1,46 @@
+
+
+<router-outlet></router-outlet>
+<mat-toolbar class="mat-elevation-z8">
+  
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+  <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+  
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  <h3>ITP</h3>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    
+
+    <mat-divider></mat-divider>
+
+    <a><button mat-button class="menu-button" routerLink="/evaluation-metrics">
+      <mat-icon class="hom">home</mat-icon>
+      <span class="elm">Evaluation Metrics</span>
+    </button></a>
+    <button mat-button class="menu-button" routerLink="/tech-orchestrator">
+      <mat-icon class="to">slideshow</mat-icon>
+      <span class="teO">Tech Orchestrator</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/micro-servi-interactions">
+      <mat-icon class="mst">file_copy</mat-icon>
+      <span class="ms">Micro Service Interactions</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+   
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

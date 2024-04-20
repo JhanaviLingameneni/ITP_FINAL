@@ -1,0 +1,62 @@
+
+<router-outlet></router-outlet>
+<div class="test-runner-container">
+    <h2>TestOps Platform</h2>
+  
+    <div>
+      <label>Base url</label>
+      <input type="text" list="urlOptions" [(ngModel)]="url" required>
+      <datalist id="urlOptions">
+        <option value="https://example.cypress.io/todo"></option>
+      </datalist>
+    </div>
+  
+    <div>
+      <label>Spec</label>
+      <input type="text" list="specOptions" [(ngModel)]="spec"required>
+      <datalist id="specOptions">
+        <option value="cypress/e2e/1-getting-started/"></option>
+      </datalist>
+    </div>
+  
+    <div>
+      <label>env_variable1</label>
+      <input type="text" list="env1Options" [(ngModel)]="env_variable1"required>
+      <datalist id="env1Options">
+        <option value="grepTags=@fvt"></option>
+        <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+      </datalist>
+    </div>
+  
+    <div>
+      <label>env_variable2</label>
+      <input type="text" list="env2Options" [(ngModel)]="env_variable2"required>
+      <datalist id="env2Options">
+        <option value="grepTags=@fvt"></option>
+        <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+      </datalist>
+    </div>
+  
+    <button (click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
+  
+    <div *ngIf="resultSummary">
+      <h3>Results summary</h3>
+      
+      
+      <p>Total Duration:
+          {{resultSummary.totalDuration}}</p>
+          <p>Total Passed:
+            {{resultSummary.totalPassed}}</p>
+      <p>Total Failed:
+            {{resultSummary.totalFailed}}</p>
+      <p>Total Pending:
+            {{resultSummary.totalPending}}</p>
+      <p>Total Skipped:
+            {{resultSummary.totalSkipped}}</p>
+      <p>Total Suites:
+            {{resultSummary.totalSuites}}</p>
+      <p>Total Tests:
+            {{resultSummary.totalTests}}</p>
+      
+    </div>
+  </div>

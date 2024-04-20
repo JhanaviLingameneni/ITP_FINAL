@@ -1,0 +1,105 @@
+.register-container{
+    background-image: url('/assets/Untitled design.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+  }
+  .register-container::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+  label{
+    color: white;
+}
+.register-title{
+    text-align: center;
+    
+}
+input[type="text"],
+  input[type="password"]
+  {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    box-sizing: border-box;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 13px;
+  }
+  button, a.router-link {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  button:disabled {
+    background-color: #007bff;
+    border-radius: 30px;
+
+  }
+  .register{
+    background-color: #007bff;
+    color: white;
+    border-radius: 30px;
+  }
+  
+  .mt-2{
+    font-size: 14px;
+  }
+  .mt-2 a{
+    color:#007bff;
+    text-decoration: none;
+
+  }
+  .mt-2 a:hover{
+    color: #007bff;
+    text-decoration: underline;
+  }
+ 
+  .p-card{
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .p-card .p-card-content{
+    background-color: transparent !important;
+  }
+  .bg-text1 {
+    position: relative;
+    padding: 20px;
+    z-index: 2;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    height: auto;
+  }

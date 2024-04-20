@@ -1,0 +1,48 @@
+.test-runner-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
+    border-radius: 5px;
+  }
+  
+  .test-runner-container h2 {
+    text-align: center;
+  }
+  
+  .test-runner-container div {
+    margin-bottom: 10px;
+    background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
+    border-radius: 5px;
+  }
+  
+  .test-runner-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .test-runner-container input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .test-runner-container button {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .test-runner-container button:hover {
+    background-color: darkgreen;
+  }
+  
+  .test-runner-container h3 {
+    margin-top: 20px;
+    
+  }

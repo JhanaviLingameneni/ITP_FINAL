@@ -1,0 +1,17 @@
+
+<div class="container">
+    
+        <div *ngFor="let row of rows" class ="row">
+            <div *ngFor="let service of row ; let last=last" [class] ="last ? 'col4 col2 last' : 'col4 col2'">
+     
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ service.name }}</h5>
+            
+            <!-- Add more details as needed -->
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
