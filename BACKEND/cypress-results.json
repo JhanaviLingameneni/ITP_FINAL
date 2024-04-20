@@ -1,0 +1,248 @@
+{
+  "browserName": "electron",
+  "browserPath": "",
+  "browserVersion": "118.0.5993.159",
+  "config": {
+    "baseUrl": "https://example.cypress.io/todo",
+    "projectRoot": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3",
+    "projectName": "backend3",
+    "configFile": "cypress.config.js",
+    "isTextTerminal": true,
+    "animationDistanceThreshold": 5,
+    "arch": "x64",
+    "blockHosts": null,
+    "chromeWebSecurity": true,
+    "clientCertificates": [],
+    "defaultCommandTimeout": 4000,
+    "downloadsFolder": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3\\cypress\\downloads",
+    "env": {
+      "grepTags": "@fvt",
+      "XC1_NEW_ORG_EMAIL": "stability@test.com"
+    },
+    "execTimeout": 60000,
+    "experimentalCspAllowList": false,
+    "experimentalFetchPolyfill": false,
+    "experimentalInteractiveRunEvents": false,
+    "experimentalRunAllSpecs": false,
+    "experimentalMemoryManagement": false,
+    "experimentalModifyObstructiveThirdPartyCode": false,
+    "experimentalSkipDomainInjection": null,
+    "experimentalOriginDependencies": false,
+    "experimentalSourceRewriting": false,
+    "experimentalSingleTabRunMode": false,
+    "experimentalStudio": false,
+    "experimentalWebKitSupport": false,
+    "fileServerFolder": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3",
+    "fixturesFolder": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3\\cypress\\fixtures",
+    "excludeSpecPattern": "*.hot-update.js",
+    "includeShadowDom": false,
+    "keystrokeDelay": 0,
+    "modifyObstructiveCode": true,
+    "numTestsKeptInMemory": 0,
+    "platform": "win32",
+    "pageLoadTimeout": 60000,
+    "port": 62321,
+    "projectId": null,
+    "redirectionLimit": 20,
+    "reporter": "spec",
+    "reporterOptions": null,
+    "requestTimeout": 5000,
+    "resolvedNodePath": "C:\\Program Files\\nodejs\\node.exe",
+    "resolvedNodeVersion": "21.7.1",
+    "responseTimeout": 30000,
+    "retries": {
+      "runMode": 0,
+      "openMode": 0
+    },
+    "screenshotOnRunFailure": true,
+    "screenshotsFolder": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3\\cypress\\screenshots",
+    "slowTestThreshold": 10000,
+    "scrollBehavior": "top",
+    "supportFile": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3\\cypress\\support\\e2e.js",
+    "taskTimeout": 60000,
+    "testIsolation": true,
+    "trashAssetsBeforeRuns": true,
+    "userAgent": null,
+    "video": false,
+    "videoCompression": false,
+    "videosFolder": "C:\\Users\\jhana\\Desktop\\ITP_login\\backend3\\cypress\\videos",
+    "viewportHeight": 660,
+    "viewportWidth": 1000,
+    "waitForAnimations": true,
+    "watchForFileChanges": false,
+    "specPattern": "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    "browsers": [
+      {
+        "channel": "stable",
+        "displayName": "Chrome",
+        "family": "chromium",
+        "majorVersion": "123",
+        "name": "chrome",
+        "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "version": "123.0.6312.123"
+      },
+      {
+        "channel": "stable",
+        "displayName": "Edge",
+        "family": "chromium",
+        "majorVersion": "123",
+        "name": "edge",
+        "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "version": "123.0.2420.97"
+      },
+      {
+        "channel": "stable",
+        "displayName": "Electron",
+        "family": "chromium",
+        "majorVersion": 118,
+        "name": "electron",
+        "path": "",
+        "version": "118.0.5993.159"
+      }
+    ],
+    "cypressBinaryRoot": "C:\\Users\\jhana\\AppData\\Local\\Cypress\\Cache\\13.7.2\\Cypress\\resources\\app",
+    "hosts": null,
+    "isInteractive": true,
+    "version": "13.7.2",
+    "testingType": "e2e",
+    "browser": null,
+    "cypressInternalEnv": "production"
+  },
+  "cypressVersion": "13.7.2",
+  "endedTestsAt": "2024-04-18T07:19:49.484Z",
+  "osName": "win32",
+  "osVersion": "10.0.22631",
+  "runs": [
+    {
+      "error": null,
+      "reporter": "spec",
+      "reporterStats": {
+        "suites": 2,
+        "tests": 6,
+        "passes": 6,
+        "pending": 0,
+        "failures": 0,
+        "start": "2024-04-18T07:19:43.620Z",
+        "end": "2024-04-18T07:19:49.496Z",
+        "duration": 5876
+      },
+      "screenshots": [],
+      "spec": {
+        "absolute": "C:/Users/jhana/Desktop/ITP_login/backend3/cypress/e2e/1-getting-started/todo.cy.js",
+        "fileExtension": ".js",
+        "fileName": "todo",
+        "name": "todo.cy.js",
+        "relative": "cypress\\e2e\\1-getting-started\\todo.cy.js"
+      },
+      "stats": {
+        "duration": 5876,
+        "endedAt": "2024-04-18T07:19:49.484Z",
+        "failures": 0,
+        "passes": 6,
+        "pending": 0,
+        "skipped": 0,
+        "startedAt": "2024-04-18T07:19:43.608Z",
+        "suites": 2,
+        "tests": 6
+      },
+      "tests": [
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 2580,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "displays two todo items by default"
+          ]
+        },
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 999,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "can add new todo items"
+          ]
+        },
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 526,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "can check off an item as completed"
+          ]
+        },
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 636,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "with a checked task",
+            "can filter for uncompleted tasks"
+          ]
+        },
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 423,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "with a checked task",
+            "can filter for completed tasks"
+          ]
+        },
+        {
+          "attempts": [
+            {
+              "state": "passed"
+            }
+          ],
+          "displayError": null,
+          "duration": 613,
+          "state": "passed",
+          "title": [
+            "example to-do app",
+            "with a checked task",
+            "can delete all completed tasks"
+          ]
+        }
+      ],
+      "video": null
+    }
+  ],
+  "startedTestsAt": "2024-04-18T07:19:43.608Z",
+  "totalDuration": 5876,
+  "totalFailed": 0,
+  "totalPassed": 6,
+  "totalPending": 0,
+  "totalSkipped": 0,
+  "totalSuites": 2,
+  "totalTests": 6
+}
