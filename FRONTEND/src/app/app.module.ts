@@ -28,6 +28,15 @@ import { TechOrchestratorComponent } from './components/tech-orchestrator/tech-o
 import { MicroServiInteractionsComponent } from './components/micro-servi-interactions/micro-servi-interactions.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { ChartModule } from 'angular-highcharts';
+import { Chart } from 'angular-highcharts';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -61,9 +70,12 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     MatDividerModule,
     MatGridListModule,
-    MatCardModule
-  
+    MatCardModule,
+    NgxSpinnerModule ,
+    CanvasJSAngularChartsModule,
+    ChartModule,
     
+
   ],
   providers: [
     provideClientHydration(),

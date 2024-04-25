@@ -1,10 +1,14 @@
 
 <router-outlet></router-outlet>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js" integrity="sha512-7DgGWBKHddtgZ9Cgu8aGfJXvgcVv4SWSESomRtghob4k4orCBUTSRQ4s5SaC2Rz+OptMqNk0aHHsaUBk6fzIXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="test-runner-container">
-    <h2>TestOps Platform</h2>
+ 
+  <mat-card class="cardd" >
+    <mat-card-content>
+    <h3 class="headd">TestOps Platform</h3>
   
     <div>
-      <label>Base url</label>
+      <label class="input1">Base url</label>
       <input type="text" list="urlOptions" [(ngModel)]="url" required>
       <datalist id="urlOptions">
         <option value="https://example.cypress.io/todo"></option>
@@ -12,7 +16,7 @@
     </div>
   
     <div>
-      <label>Spec</label>
+      <label class="input2">Spec</label>
       <input type="text" list="specOptions" [(ngModel)]="spec"required>
       <datalist id="specOptions">
         <option value="cypress/e2e/1-getting-started/"></option>
@@ -20,8 +24,8 @@
     </div>
   
     <div>
-      <label>env_variable1</label>
-      <input type="text" list="env1Options" [(ngModel)]="env_variable1"required>
+      <label class="input3">env_variable1</label>
+      <input type="text" list="env1Options" [(ngModel)]="env_variable1" required>
       <datalist id="env1Options">
         <option value="grepTags=@fvt"></option>
         <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
@@ -29,34 +33,45 @@
     </div>
   
     <div>
-      <label>env_variable2</label>
-      <input type="text" list="env2Options" [(ngModel)]="env_variable2"required>
+      <label class="input4">env_variable2</label>
+      <input type="text" list="env2Options" [(ngModel)]="env_variable2" required>
       <datalist id="env2Options">
         <option value="grepTags=@fvt"></option>
         <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
       </datalist>
     </div>
+    <ngx-spinner 
+      bdColor = "rgba(0, 0, 0, 0.8)" 
+      size = "medium" 
+      color = "#fff" 
+      type = "ball-spin">
+<p style="font-size:20px; color: white" > Loading... </p>
+</ngx-spinner>
   
-    <button (click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
+    <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
+  </mat-card-content>
+</mat-card>
+<div class="chart-container">
   
-    <div *ngIf="resultSummary">
+<div class="charts">
+
+  <div class="pie" [chart]="pieChart">
+
+  </div>
+
+
+<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary">
+  
+ 
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <div *ngIf="resultSummary" class="pie-chart-container">
       <h3>Results summary</h3>
       
+     
       
-      <p>Total Duration:
-          {{resultSummary.totalDuration}}</p>
-          <p>Total Passed:
-            {{resultSummary.totalPassed}}</p>
-      <p>Total Failed:
-            {{resultSummary.totalFailed}}</p>
-      <p>Total Pending:
-            {{resultSummary.totalPending}}</p>
-      <p>Total Skipped:
-            {{resultSummary.totalSkipped}}</p>
-      <p>Total Suites:
-            {{resultSummary.totalSuites}}</p>
-      <p>Total Tests:
-            {{resultSummary.totalTests}}</p>
-      
+          </div>
+          
+          </div>
     </div>
+  </div>
   </div>
