@@ -32,6 +32,11 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ChartModule } from 'angular-highcharts';
 import { Chart } from 'angular-highcharts';
+import {MatMenuModule} from '@angular/material/menu';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PactsComponent } from './pacts/pacts.component';
+import { PactDataComponent } from './pact-data/pact-data.component';
+import {MatTableModule} from '@angular/material/table'
 
 
 
@@ -48,6 +53,9 @@ import { Chart } from 'angular-highcharts';
     EvaluationMetricsComponent,
     TechOrchestratorComponent,
     MicroServiInteractionsComponent,
+    PactsComponent,
+    PactDataComponent,
+    
     
   ],
   imports: [
@@ -74,9 +82,11 @@ import { Chart } from 'angular-highcharts';
     NgxSpinnerModule ,
     CanvasJSAngularChartsModule,
     ChartModule,
-    
+    MatMenuModule,
+    MatTableModule
 
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     provideClientHydration(),
     MessageService

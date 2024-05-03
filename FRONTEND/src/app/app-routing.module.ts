@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { EvaluationMetricsComponent } from './components/evaluation-metrics/evaluation-metrics.component';
 import { TechOrchestratorComponent } from './components/tech-orchestrator/tech-orchestrator.component';
 import { MicroServiInteractionsComponent } from './components/micro-servi-interactions/micro-servi-interactions.component';
+import { PactsComponent } from './pacts/pacts.component';
+import { PactDataComponent } from './pact-data/pact-data.component';
 
 const routes: Routes = [
   {
@@ -45,11 +47,17 @@ const routes: Routes = [
     component:MicroServiInteractionsComponent
   },
   {
-    path: '', redirectTo: 'login', pathMatch: 'full'
+    path:'pacts',
+    component:PactsComponent
   },
   {
-    path:'next-page', component:MicroServiInteractionsComponent
-  }
+    path:'pact-data',
+    component:PactDataComponent
+  },
+  {
+    path: '', redirectTo: 'login', pathMatch: 'full'
+  },
+  
   
 ];
 

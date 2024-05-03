@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../../shared/data.service';
 
 @Component({
   selector: 'app-micro-servi-interactions',
@@ -9,19 +10,22 @@ import { Router } from '@angular/router';
 export class MicroServiInteractionsComponent {
   title = 'microservices-dashboard';
   disabledServices:{[key:string]:boolean}={};
-  currentConsumer: string | null=null;
-  currentProducer: string | null=null;
+  currentConsumer: string ='';
+  currentProducer: string ='';
   onServiceClick(serviceName:string){
     console.log('Service clicked:',serviceName);
     if (serviceName==='Auth'){
       
       this.currentConsumer=serviceName;
+      
       if(this.currentProducer ==='Auth'){
-        this.currentProducer=null;
+        //this.currentProducer=null;
       }
       }else if(serviceName=== 'Communications'|| serviceName === 'Organizations')
         {
           this.currentProducer=serviceName;
+          
+          
 
         }
         if(serviceName==='Auth'){
@@ -64,9 +68,15 @@ export class MicroServiInteractionsComponent {
   ]
 ];
 
-  constructor(private router:Router){}
+  constructor(private router:Router,
+    private dataService:DataService
+  ){}
   executeInteraction(): void {
-    this.router.navigate(['/next-page']);
+    this.router.navigate(['/pact-data']);
+    
+  }
+  execute(){
+    this.dataService.updatePactData(this.currentConsumer, this.currentProducer);
   }
  
 }

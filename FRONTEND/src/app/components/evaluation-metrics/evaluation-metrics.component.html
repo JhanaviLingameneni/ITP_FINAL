@@ -1,2 +1,11 @@
-<p>evaluation-metrics works!</p>
-<router-outlet></router-outlet>
+
+<div class="result-summary-container">
+    <ngx-spinner *ngIf="isLoading"...></ngx-spinner>
+    
+    <div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary"></div>
+    <div *ngIf="testExecuted">
+      <h3 >Results summary </h3>
+    </div>
+    
+    </div>
+    

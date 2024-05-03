@@ -5,12 +5,16 @@ import { OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ViewportScroller } from '@angular/common';
 import { Chart } from 'angular-highcharts';
+import * as Highcharts from 'highcharts';
 import { ChartModule } from 'angular-highcharts';
+import { Options, SeriesOptionsType } from 'highcharts';
+import { DataService } from '../../shared/data.service';
+
 @Component({
   selector: 'app-tech-orchestrator',
   templateUrl: './tech-orchestrator.component.html',
   styleUrl: './tech-orchestrator.component.css',
-  template: '<div [chart]="pieChart"></div>'
+  template: ' <div [chart]="pieChart"></div>'
 })
 export class TechOrchestratorComponent implements OnInit {
   url: string = '';
@@ -19,19 +23,29 @@ export class TechOrchestratorComponent implements OnInit {
   env_variable2: string = '';
   resultSummary: any=null;
   isLoading:boolean=false;
-  resultsReady:boolean=false
+  resultsReady:boolean=false;
+  barChart:any;
   pieChart:any;
-
+  Highcharts:typeof Highcharts= Highcharts;
+  chartOptions: Highcharts.Options={};
+  runResults:any[]=[];
+  
   
   
   constructor(
     private spinner: NgxSpinnerService,
     private viewportScroller: ViewportScroller,
     private testResultsService: TestResultsService,
+    private dataService: DataService,
     private http: HttpClient) {}
     ngOnInit(): void {
         this.initializePieChart();
+        this.initializebarChart();
+        
+        
     }
+    
+    
     
    testExecuted: boolean=false;
    
@@ -77,6 +91,7 @@ export class TechOrchestratorComponent implements OnInit {
         
         this.testExecuted=true;
         this.initializePieChart();
+        this.initializebarChart();
       },
       error:(error)=> {
         this.resultSummary='There was error executing the tests';
@@ -88,6 +103,7 @@ export class TechOrchestratorComponent implements OnInit {
   
   }
   initializePieChart():void{
+   
     this.pieChart=new Chart({
       chart: {
         width:500,
@@ -165,9 +181,89 @@ export class TechOrchestratorComponent implements OnInit {
 
     })
   }
+  initializebarChart():void{
+  this.barChart=new Chart({
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: ''
+    },
+    credits: {
+      enabled: false
+    },
+    xAxis:{
+      categories:['Run1','Run2','Run3'],
+      
+      title:{
+        text:'Runs'
+      }
+    },
+    yAxis:{
+      
+      min:0,
+      
+    },
+    
+    series: [
+      {
+        name: 'Results',
+        type: 'column',
+        data: [{ name: 'Total Passed', y: this.resultSummary.totalPassed, color: 'rgb(50,205,50)' },
+    
+        { name: 'Total Failed', y: this.resultSummary.totalFailed, color: 'rgb(255,0,0)' },
+
+        { name: 'Total Pending', y: this.resultSummary.totalPending, color: '#00adb5' },
+        { name: 'Total Skipped', y: this.resultSummary.totalSkipped, color: 'rgb(238,130,238)' },
+        { name: 'Total Suites', y: this.resultSummary.totalSuites, color: 'rgb(255,165,0)' },
+        { name: 'Total Tests', y: this.resultSummary.totalTests, color: 'rgb(0,0,255)' }]
+      } 
+    ] 
   
+
+  })
   
 }
+addRunResult(passed: number, failed: number): void {
+  this.runResults.push({ passed:Number, failed:Number });
+  this.updateChartData();
+}
 
+updateChartData(): void {
+  if (!Array.isArray(this.runResults)) {
+    console.error('runResults is not an array');
+    return;
+  }
+
+  const categories = this.runResults.map(run => 'Run ${run.runNumber}');
+  const passedData = this.runResults.map(run => run.passed);
+  const failedData = this.runResults.map(run => run.failed);
+
+  if (this.chartOptions && this.chartOptions.series) {
+    this.chartOptions.xAxis = {
+      ...(this.chartOptions.xAxis || {}), // Use existing xAxis properties if any
+      categories: categories
+    };
+    if (this.chartOptions.series[0]) {
+      (this.chartOptions.series[0] as any).data = passedData; // Data for passed results
+    }
+    if (this.chartOptions.series[1]) {
+      (this.chartOptions.series[1] as any).data = failedData; // Data for failed results
+    }
+
+    // Now trigger the chart update.
+    // You need to replace 'this.initializeBarChart' with the actual method to update your chart.
+    // For example, if you are using Angular-Highcharts, you might need to trigger change detection
+    // by updating a bound property, or by calling a method provided by the chart component or directive.
+    // this.chart.update(); // This is a placeholder, please use the actual update call
+  } else {
+    console.error('Chart options or series is not defined');
+  }
+}
+}
+ 
+
+  
+ 
   
 

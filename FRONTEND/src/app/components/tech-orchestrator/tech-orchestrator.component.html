@@ -1,6 +1,6 @@
 
 <router-outlet></router-outlet>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.js" integrity="sha512-7DgGWBKHddtgZ9Cgu8aGfJXvgcVv4SWSESomRtghob4k4orCBUTSRQ4s5SaC2Rz+OptMqNk0aHHsaUBk6fzIXw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <div class="test-runner-container">
  
   <mat-card class="cardd" >
@@ -49,29 +49,37 @@
 </ngx-spinner>
   
     <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
+   
   </mat-card-content>
 </mat-card>
+</div>
+<div class="result-summary-container">
+<ngx-spinner *ngIf="isLoading"...></ngx-spinner>
+
+<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary"></div>
+<div *ngIf="testExecuted">
+  <h3 >Results summary </h3>
+</div>
+
+</div>
+
+
+
+
+
+
 <div class="chart-container">
+  <div class="charts">
+
+    <div class="pie" [chart]="pieChart"></div>
+    <div class="bar"[chart]="barChart"></div>
+  </div>
+</div>
   
-<div class="charts">
-
-  <div class="pie" [chart]="pieChart">
-
-  </div>
-
-
-<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary">
   
- 
-  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <div *ngIf="resultSummary" class="pie-chart-container">
-      <h3>Results summary</h3>
-      
-     
-      
-          </div>
-          
-          </div>
-    </div>
-  </div>
-  </div>
+
+  
+
+
+
+  

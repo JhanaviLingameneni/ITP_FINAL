@@ -3,20 +3,12 @@
 <router-outlet></router-outlet>
 <mat-toolbar class="mat-elevation-z8">
   
-  <button
-    mat-icon-button
-    *ngIf="sidenav.mode === 'over'"
-    (click)="sidenav.toggle()"
-  >
-  <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
   
-    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-  </button>
-  <h3>ITP</h3>
+  <h3>ITP Dashboard</h3>
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
     
 
     <mat-divider></mat-divider>
@@ -29,10 +21,20 @@
       <mat-icon class="to">slideshow</mat-icon>
       <span class="teO">Tech Orchestrator</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/micro-servi-interactions">
-      <mat-icon class="mst">file_copy</mat-icon>
-      <span class="ms">Micro Service Interactions</span>
-    </button>
+    
+    <a>
+    <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
+      <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
+      <span  class="ms">Micro Service Interactions 
+        
+      </span></div>
+    </button></a>
+    <mat-menu #menu="matMenu" class="sub" >
+      <button mat-menu-item routerLink="/micro-servi-interactions" class="mat-menu-item">Micro-Service-Interactions</button>
+      <button mat-menu-item routerLink="/pacts" class="mat-menu-item" >Pacts</button>
+    </mat-menu>
+    
+    
 
     <mat-divider></mat-divider>
 
@@ -40,7 +42,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
-      
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
