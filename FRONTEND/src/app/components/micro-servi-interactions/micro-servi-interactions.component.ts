@@ -10,20 +10,20 @@ import { DataService } from '../../shared/data.service';
 export class MicroServiInteractionsComponent {
   title = 'microservices-dashboard';
   disabledServices:{[key:string]:boolean}={};
-  currentConsumer: string ='';
-  currentProducer: string ='';
+  consumer: string ='';
+  producer: string ='';
   onServiceClick(serviceName:string){
     console.log('Service clicked:',serviceName);
     if (serviceName==='Auth'){
       
-      this.currentConsumer=serviceName;
+      this.consumer=serviceName;
       
-      if(this.currentProducer ==='Auth'){
+      if(this.producer ==='Auth'){
         //this.currentProducer=null;
       }
       }else if(serviceName=== 'Communications'|| serviceName === 'Organizations')
         {
-          this.currentProducer=serviceName;
+          this.producer=serviceName;
           
           
 
@@ -76,7 +76,7 @@ export class MicroServiInteractionsComponent {
     
   }
   execute(){
-    this.dataService.updatePactData(this.currentConsumer, this.currentProducer);
+    this.dataService.getPactData();
   }
  
 }

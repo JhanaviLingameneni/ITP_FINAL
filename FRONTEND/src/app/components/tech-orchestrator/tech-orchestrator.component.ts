@@ -8,7 +8,7 @@ import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts';
 import { ChartModule } from 'angular-highcharts';
 import { Options, SeriesOptionsType } from 'highcharts';
-import { DataService } from '../../shared/data.service';
+
 
 @Component({
   selector: 'app-tech-orchestrator',
@@ -36,7 +36,7 @@ export class TechOrchestratorComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private viewportScroller: ViewportScroller,
     private testResultsService: TestResultsService,
-    private dataService: DataService,
+   
     private http: HttpClient) {}
     ngOnInit(): void {
         this.initializePieChart();

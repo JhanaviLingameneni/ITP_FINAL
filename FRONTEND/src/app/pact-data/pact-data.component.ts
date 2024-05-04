@@ -1,20 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/data.service';
+import { DataService } from './data.service';
+import { PactData } from '../interfaces/pact';
 
 @Component({
   selector: 'app-pact-data',
   templateUrl: './pact-data.component.html',
   styleUrls: ['./pact-data.component.css']
 })
+
 export class PactDataComponent implements OnInit {
   displayedColumns: string[] = ['consumer', 'provider', 'pactFile', 'status', 'runDuration'];
-  dataSource = [];
+  dataSource : PactData[] =[]
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.pactData$.subscribe(data => {
-      
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.dataService.getPactData().subscribe(data =>{                           
+      // Assuming the response will have the data directly accessible
+      this.dataSource = [{
+        consumer:'Auth',
+        provider: 'Organizations',
+        pactFile: 'Auth-Organization.json',
+        status:'Pass',
+        runDuration:'10 seconds'}]; // You might need to adjust based on the actual structure
+        console.log(this.dataSource)
+    }, error => {
+      console.error('Failed to fetch pact data', error);
     });
   }
 }

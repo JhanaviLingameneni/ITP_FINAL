@@ -1,4 +1,3 @@
-// src/app/shared/data.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,7 +14,8 @@ export class DataService {
   getPactData(): Observable<PactData> {
     return this.http.post<PactData>(this.apiUrl, {
       consumer: "auth-oidc",
-      producer: "org"
+      producer: "org",
+      pactFile: ""
     });
   }
 }
