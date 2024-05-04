@@ -19,7 +19,7 @@ export class PactDataComponent implements OnInit {
   }
 
   fetchData() {
-    this.dataService.getPactData().subscribe(data =>{                           
+                            
       // Assuming the response will have the data directly accessible
       this.dataSource = [{
         consumer:'Auth',
@@ -27,9 +27,6 @@ export class PactDataComponent implements OnInit {
         pactFile: 'Auth-Organization.json',
         status:'Pass',
         runDuration:'10 seconds'}]; // You might need to adjust based on the actual structure
-        console.log(this.dataSource)
-    }, error => {
-      console.error('Failed to fetch pact data', error);
-    });
-  }
+        console.log(this.dataSource);
+    }
 }

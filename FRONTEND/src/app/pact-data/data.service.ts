@@ -15,7 +15,7 @@ export class DataService {
     return this.http.post<PactData>(this.apiUrl, {
       consumer: "auth-oidc",
       producer: "org",
-      pactFile: ""
+      
     });
   }
 }
