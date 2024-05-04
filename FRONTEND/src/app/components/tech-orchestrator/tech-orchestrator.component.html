@@ -1,12 +1,37 @@
 
 <router-outlet></router-outlet>
-
+<mat-toolbar class="mat-elevation-z8">
+  <h3>ITP Dashboard</h3>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
+    <mat-divider></mat-divider>
+    <a mat-button mat-button class="menu-button" routerLink="/evaluation-metrics">
+      <mat-icon class="hom">home</mat-icon>
+      <span class="elm">Evaluation Metrics</span>
+    </a>
+    <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
+      <mat-icon class="to">slideshow</mat-icon>
+      <span class="teO">Test Orchestrator</span>
+    </a>
+    <a mat-button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
+      <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
+      <span  class="ms">Micro Service Interactions 
+      </span></div>
+    </a>
+    <mat-menu #menu="matMenu" class="sub" >
+      <button mat-menu-item routerLink="/micro-servi-interactions" class="mat-menu-item">Micro-Service-Interactions</button>
+      <button mat-menu-item routerLink="/pacts" class="mat-menu-item" >Pacts</button>
+    </mat-menu>
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content style="overflow-y: auto;">
+    <div class="content">
+      <router-outlet>
 <div class="test-runner-container">
- 
   <mat-card class="cardd" >
     <mat-card-content>
     <h3 class="headd">TestOps Platform</h3>
-  
     <div>
       <label class="input1">Base url</label>
       <input type="text" list="urlOptions" [(ngModel)]="url" required>
@@ -14,7 +39,6 @@
         <option value="https://example.cypress.io/todo"></option>
       </datalist>
     </div>
-  
     <div>
       <label class="input2">Spec</label>
       <input type="text" list="specOptions" [(ngModel)]="spec"required>
@@ -22,7 +46,6 @@
         <option value="cypress/e2e/1-getting-started/"></option>
       </datalist>
     </div>
-  
     <div>
       <label class="input3">env_variable1</label>
       <input type="text" list="env1Options" [(ngModel)]="env_variable1" required>
@@ -31,7 +54,6 @@
         <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
       </datalist>
     </div>
-  
     <div>
       <label class="input4">env_variable2</label>
       <input type="text" list="env2Options" [(ngModel)]="env_variable2" required>
@@ -47,34 +69,27 @@
       type = "ball-spin">
 <p style="font-size:20px; color: white" > Loading... </p>
 </ngx-spinner>
-  
     <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
-   
   </mat-card-content>
 </mat-card>
 </div>
 <div class="result-summary-container">
 <ngx-spinner *ngIf="isLoading"...></ngx-spinner>
-
 <div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary"></div>
 <div *ngIf="testExecuted">
   <h3 >Results summary </h3>
 </div>
-
 </div>
-
-
-
-
-
-
 <div class="chart-container">
   <div class="charts">
-
     <div class="pie" [chart]="pieChart"></div>
     <div class="bar"[chart]="barChart"></div>
   </div>
 </div>
+</router-outlet>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
   
   
 

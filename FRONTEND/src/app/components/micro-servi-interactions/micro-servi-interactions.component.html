@@ -1,6 +1,46 @@
+<router-outlet></router-outlet>
+<mat-toolbar class="mat-elevation-z8">
+  
+  
+  <h3>ITP Dashboard</h3>
+</mat-toolbar>
 
-<div class="container">
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
+   
+
+    <mat-divider></mat-divider>
+
+    <a mat-button mat-button class="menu-button" routerLink="/evaluation-metrics">
+      <mat-icon class="hom">home</mat-icon>
+      <span class="elm">Evaluation Metrics</span>
+    </a>
+    <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
+      <mat-icon class="to">slideshow</mat-icon>
+      <span class="teO">Test Orchestrator</span>
+    </a>
     
+    <a>
+    <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
+      <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
+      <span  class="ms">Micro Service Interactions 
+        
+      </span></div>
+    </button></a>
+    <mat-menu #menu="matMenu" class="sub" >
+      <button mat-menu-item routerLink="/micro-servi-interactions" class="mat-menu-item">Micro-Service-Interactions</button>
+      <button mat-menu-item routerLink="/pacts" class="mat-menu-item" >Pacts</button>
+    </mat-menu>
+    
+    
+
+    <mat-divider></mat-divider>
+
+   
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content ">
+      <router-outlet>
         <div *ngFor="let row of rows" class ="row">
             <div *ngFor="let service of row ; let last=last" [class] ="last ? 'col4 col2 last' : 'col4 col2'">
      
@@ -25,4 +65,8 @@
       <button type="button" class="execute-button" (click)="executeInteraction()">Execute</button>
     </div>
    
-  </div>
+  
+</router-outlet>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>

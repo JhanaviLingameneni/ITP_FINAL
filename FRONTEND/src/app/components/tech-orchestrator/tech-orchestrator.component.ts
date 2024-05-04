@@ -41,15 +41,8 @@ export class TechOrchestratorComponent implements OnInit {
     ngOnInit(): void {
         this.initializePieChart();
         this.initializebarChart();
-        
-        
     }
-    
-    
-    
    testExecuted: boolean=false;
-   
-
   executeTests():void {
     this.isLoading=true;
     this.resultsReady=false
@@ -88,6 +81,7 @@ export class TechOrchestratorComponent implements OnInit {
           totalSuites: data.totalSuites,
           totalTests: data.totalTests
         };
+       
         
         this.testExecuted=true;
         this.initializePieChart();

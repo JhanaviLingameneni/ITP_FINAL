@@ -17,10 +17,10 @@
       <mat-icon class="hom">home</mat-icon>
       <span class="elm">Evaluation Metrics</span>
     </a>
-    <button mat-button class="menu-button" routerLink="/tech-orchestrator">
+    <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
       <mat-icon class="to">slideshow</mat-icon>
       <span class="teO">Test Orchestrator</span>
-    </button>
+    </a>
     
     <a>
     <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
@@ -43,12 +43,7 @@
   <mat-sidenav-content>
     <div class="content mat-elevation-z8">
       <router-outlet>
-        <mat-nav-list>
-          <a mat-list-item [routerLink]="['/evaluation-metrics']"></a>
-          <a mat-list-item [routerLink]="['/tech-orchestrator']"></a>
-          <a mat-list-item [routerLink]="['/micro-servi-interactions']"></a>
-          <!-- Add other navigation links here -->
-        </mat-nav-list>
+        
       </router-outlet>
     </div>
   </mat-sidenav-content>

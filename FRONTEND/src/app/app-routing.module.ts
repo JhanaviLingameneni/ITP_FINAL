@@ -14,7 +14,8 @@ import { PactDataComponent } from './pact-data/pact-data.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    
   },
   {
     path: 'register',
@@ -36,15 +37,21 @@ const routes: Routes = [
   },
   {
     path:'evaluation-metrics',
-    component:EvaluationMetricsComponent 
+    component:EvaluationMetricsComponent ,
+    pathMatch:'full',
+    
   },
   {
     path:'tech-orchestrator',
-    component:TechOrchestratorComponent
+    component:TechOrchestratorComponent,
+    pathMatch:'full',
+    
   },
   {
     path:'micro-servi-interactions',
-    component:MicroServiInteractionsComponent
+    component:MicroServiInteractionsComponent,
+    pathMatch:'full',
+    
   },
   {
     path:'pacts',

@@ -53,16 +53,10 @@ export class MicroServiInteractionsComponent {
     {name:'Jobs'},
     {name:'Collections'},
     {name:'Certificates Manager'},
-    
-    // ... add objects for each microservice
-  ],
- 
-  
-  [
     {name:'Communications'},
     {name:'Organizations'},
+    // ... add objects for each microservice
   ],
-  
   [
     {name:'Auth'},
   ]
