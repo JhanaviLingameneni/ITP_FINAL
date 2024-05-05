@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { PactData } from '../interfaces/pact';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pact-data',
@@ -12,7 +13,11 @@ export class PactDataComponent implements OnInit {
   displayedColumns: string[] = ['consumer', 'provider', 'pactFile', 'status', 'runDuration'];
   dataSource : PactData[] =[]
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
 
   ngOnInit() {
     this.fetchData();
@@ -24,9 +29,12 @@ export class PactDataComponent implements OnInit {
       this.dataSource = [{
         consumer:'Auth',
         provider: 'Organizations',
-        pactFile: 'Auth-Organization.json',
+        pactFile: 'pact-data',
         status:'Pass',
-        runDuration:'10 seconds'}]; // You might need to adjust based on the actual structure
+        runDuration:'10 seconds',
+        
+      }]; // You might need to adjust based on the actual structure
         console.log(this.dataSource);
+        
     }
 }

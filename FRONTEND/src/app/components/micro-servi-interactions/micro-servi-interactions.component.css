@@ -39,7 +39,7 @@ html, body{
     margin: 5px;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: calc(25%-10px);
+   
   }
   .card-body {
     padding: 0.5rem;

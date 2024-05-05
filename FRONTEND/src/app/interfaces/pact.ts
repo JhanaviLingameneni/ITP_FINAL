@@ -3,5 +3,6 @@ export interface PactData{
   provider: string, 
   pactFile : string, 
   status:string,
-  runDuration:string
+  runDuration:string,
+  
 }
