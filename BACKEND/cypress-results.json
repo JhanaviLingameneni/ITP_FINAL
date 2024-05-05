@@ -41,7 +41,7 @@
     "numTestsKeptInMemory": 0,
     "platform": "win32",
     "pageLoadTimeout": 60000,
-    "port": 62321,
+    "port": 54147,
     "projectId": null,
     "redirectionLimit": 20,
     "reporter": "spec",
@@ -76,19 +76,19 @@
         "channel": "stable",
         "displayName": "Chrome",
         "family": "chromium",
-        "majorVersion": "123",
+        "majorVersion": "124",
         "name": "chrome",
         "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-        "version": "123.0.6312.123"
+        "version": "124.0.6367.119"
       },
       {
         "channel": "stable",
         "displayName": "Edge",
         "family": "chromium",
-        "majorVersion": "123",
+        "majorVersion": "124",
         "name": "edge",
         "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-        "version": "123.0.2420.97"
+        "version": "124.0.2478.80"
       },
       {
         "channel": "stable",
@@ -109,7 +109,7 @@
     "cypressInternalEnv": "production"
   },
   "cypressVersion": "13.7.2",
-  "endedTestsAt": "2024-04-18T07:19:49.484Z",
+  "endedTestsAt": "2024-05-05T10:39:27.647Z",
   "osName": "win32",
   "osVersion": "10.0.22631",
   "runs": [
@@ -122,9 +122,9 @@
         "passes": 6,
         "pending": 0,
         "failures": 0,
-        "start": "2024-04-18T07:19:43.620Z",
-        "end": "2024-04-18T07:19:49.496Z",
-        "duration": 5876
+        "start": "2024-05-05T10:39:11.897Z",
+        "end": "2024-05-05T10:39:27.683Z",
+        "duration": 15786
       },
       "screenshots": [],
       "spec": {
@@ -135,13 +135,13 @@
         "relative": "cypress\\e2e\\1-getting-started\\todo.cy.js"
       },
       "stats": {
-        "duration": 5876,
-        "endedAt": "2024-04-18T07:19:49.484Z",
+        "duration": 15826,
+        "endedAt": "2024-05-05T10:39:27.647Z",
         "failures": 0,
         "passes": 6,
         "pending": 0,
         "skipped": 0,
-        "startedAt": "2024-04-18T07:19:43.608Z",
+        "startedAt": "2024-05-05T10:39:11.821Z",
         "suites": 2,
         "tests": 6
       },
@@ -153,7 +153,7 @@
             }
           ],
           "displayError": null,
-          "duration": 2580,
+          "duration": 7515,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -167,7 +167,7 @@
             }
           ],
           "displayError": null,
-          "duration": 999,
+          "duration": 2753,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -181,7 +181,7 @@
             }
           ],
           "displayError": null,
-          "duration": 526,
+          "duration": 1058,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -195,7 +195,7 @@
             }
           ],
           "displayError": null,
-          "duration": 636,
+          "duration": 1690,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -210,7 +210,7 @@
             }
           ],
           "displayError": null,
-          "duration": 423,
+          "duration": 1468,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -225,7 +225,7 @@
             }
           ],
           "displayError": null,
-          "duration": 613,
+          "duration": 945,
           "state": "passed",
           "title": [
             "example to-do app",
@@ -237,8 +237,8 @@
       "video": null
     }
   ],
-  "startedTestsAt": "2024-04-18T07:19:43.608Z",
-  "totalDuration": 5876,
+  "startedTestsAt": "2024-05-05T10:39:11.821Z",
+  "totalDuration": 15826,
   "totalFailed": 0,
   "totalPassed": 6,
   "totalPending": 0,
