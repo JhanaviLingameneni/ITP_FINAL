@@ -16,12 +16,12 @@ const mongoString = "mongodb://localhost:27017/abc"
 
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }),bodyParser.json(), bodyParser.urlencoded({ extended: true }), express.json());
 
-app.post('/api/v1/runCypress', runCypressCommand);
+app.post('/api/v1/runCypress',cors(), runCypressCommand);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
