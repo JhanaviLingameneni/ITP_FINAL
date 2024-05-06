@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from './data.service';
+import { PactData } from '../interfaces/pact';
 @Component({
   selector: 'app-pacts',
   templateUrl: './pacts.component.html',
@@ -7,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class PactsComponent implements OnInit{
   public jsonData: any;
+  displayedColumns: string[] = ['consumer', 'provider', 'pactFile', 'status', 'runDuration'];
+  dataSource : PactData[] =[]
 
-  constructor(private router: Router) {
+  constructor(private router: Router, 
+    private dataService: DataService) {
 
     this.jsonData = {
       "consumer": {
@@ -50,7 +55,24 @@ export class PactsComponent implements OnInit{
     this.router.navigate(['login']);
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
+                            
+      // Assuming the response will have the data directly accessible
+      this.dataSource = [{
+        consumer:'Auth',
+        provider: 'Organizations',
+        pactFile: 'pact-data',
+        status:'Pass',
+        runDuration:'10 seconds',
+        
+      }]; // You might need to adjust based on the actual structure
+        console.log(this.dataSource);
+        
+    }
 }
 
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../shared/data.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-micro-servi-interactions',
@@ -12,7 +13,7 @@ export class MicroServiInteractionsComponent {
   disabledServices:{[key:string]:boolean}={};
   consumer: string ='';
   producer: string ='';
-  onServiceClick(serviceName:string){
+  onServiceClick(serviceName:string):void{
     console.log('Service clicked:',serviceName);
     if (serviceName==='Auth'){
       
@@ -24,10 +25,8 @@ export class MicroServiInteractionsComponent {
       }else if(serviceName=== 'Communications'|| serviceName === 'Organizations')
         {
           this.producer=serviceName;
-          
-          
-
         }
+       
         if(serviceName==='Auth'){
           this.disabledServices={};
           for(const service of this.rows.flat()){
@@ -35,6 +34,12 @@ export class MicroServiInteractionsComponent {
               this.disabledServices[service.name]=true;
             }
           }
+        }
+        if(serviceName==="Communications"){
+          this.disabledServices['Organizations']=true;
+        }
+        if(serviceName==='Organizations'){
+          this.disabledServices['Communications']=true;
         }
       
        
@@ -74,8 +79,16 @@ export class MicroServiInteractionsComponent {
     this.router.navigate(['/pact-data']);
     
   }
-  execute(){
-    this.dataService.getPactData();
+  execute(): void{
+    console.log('Execute called');
+    this.dataService.getPactData().subscribe({
+      next:(data)=>{
+        console.log('Data recieved:',data);
+      },
+      error:(error)=>{
+        console.error('Error:', error);
+      }
+    });
   }
  
 }

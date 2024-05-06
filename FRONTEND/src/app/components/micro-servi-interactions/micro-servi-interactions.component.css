@@ -160,7 +160,7 @@ mat-sidenav {
   padding: 16px;
   overflow: auto;
  background-color: #dae8fc;
- overflow: hidden;
+ 
 }
 
 mat-sidenav-container {
@@ -291,9 +291,18 @@ mat-divider {
   display: flex;
   height: 100%;
 }
-.content{
-  overflow-y: auto;
-  height: auto;
+.p-button{
+  color: white;
+  justify-content: right;
+  display: flex;
+  background-color: transparent;
+  cursor: pointer;
+  border: none !important;
 }
+.right-align{
+  margin-left: auto;
+}
+
+
 
 

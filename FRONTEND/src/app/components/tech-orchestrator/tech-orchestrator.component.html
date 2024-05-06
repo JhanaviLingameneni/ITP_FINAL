@@ -49,23 +49,14 @@
       </datalist>
     </div>
     <div>
-      <label class="input3">env_variable1</label>
-      <input type="text" list="env1Options" [(ngModel)]="env_variable1" required>
+      <label class="input3">env</label>
+      <input type="text" list="env1Options" [(ngModel)]="env" required>
       <datalist id="env1Options">
         <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
-        <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
-        <option value="grepTags=@fvt"></option>
+        
       </datalist>
     </div>
-    <div>
-      <label class="input4">env_variable2</label>
-      <input type="text" list="env2Options" [(ngModel)]="env_variable2" required>
-      <datalist id="env2Options">
-        <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
-        <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
-        <option value="grepTags=@fvt"></option>
-      </datalist>
-    </div>
+   
     <ngx-spinner 
       bdColor = "rgba(0, 0, 0, 0.8)" 
       size = "medium" 
@@ -73,7 +64,7 @@
       type = "ball-spin">
 <p style="font-size:20px; color: white" > Loading... </p>
 </ngx-spinner>
-    <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env_variable1 || !env_variable2">Execute Tests</button>
+    <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env">Execute Tests</button>
   </mat-card-content>
 </mat-card>
 </div>
