@@ -15,13 +15,16 @@ import { RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { ButtonModule } from 'primeng/button';
+
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, CommonModule, MatSidenavModule, MatDividerModule, RouterModule,MatExpansionModule,MatMenuModule, MatListModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, CommonModule, MatSidenavModule, MatDividerModule, RouterModule,MatExpansionModule,MatMenuModule, MatListModule, ButtonModule],
 })
 export class HeaderComponent {
   @ViewChild(MatSidenav)
@@ -29,6 +32,10 @@ export class HeaderComponent {
  
 
   constructor(private observer: BreakpointObserver, private router: Router) {}
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
 
   
 }

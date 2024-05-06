@@ -196,12 +196,21 @@
   .turn{
     color: black;
   }
-  .but{
-    margin-top: 30px;
-    justify-content: center;
+  :host ::ng-deep .p-button{
+    color: white;
+    justify-content: right;
     display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    border: none !important;
   }
-  
+  .right-align{
+    margin-left: auto;
+  }
+  .heav{
+    color: white;
+  }
+ 
   
   
   

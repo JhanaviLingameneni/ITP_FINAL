@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-pacts',
   templateUrl: './pacts.component.html',
@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class PactsComponent implements OnInit{
   public jsonData: any;
 
-  constructor() {
+  constructor(private router: Router) {
+
     this.jsonData = {
       "consumer": {
         "name": "auth-oidc"
@@ -43,6 +44,10 @@ export class PactsComponent implements OnInit{
         "name": "organizations"
       }
     };
+  }
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
   }
 
   ngOnInit(): void {}

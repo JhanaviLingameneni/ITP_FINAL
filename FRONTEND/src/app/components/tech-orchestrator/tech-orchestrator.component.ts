@@ -8,6 +8,7 @@ import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts';
 import { ChartModule } from 'angular-highcharts';
 import { Options, SeriesOptionsType } from 'highcharts';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,8 +37,14 @@ export class TechOrchestratorComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private viewportScroller: ViewportScroller,
     private testResultsService: TestResultsService,
+    private router: Router,
    
     private http: HttpClient) {}
+    logOut() {
+      sessionStorage.clear();
+      this.router.navigate(['login']);
+    }
+  
     ngOnInit(): void {
         this.initializePieChart();
         this.initializebarChart();
@@ -50,13 +57,13 @@ export class TechOrchestratorComponent implements OnInit {
     this.spinner.show();
     setTimeout(()=>{
       this.spinner.hide();
-    }, 2000)
+    }, 5000)
     
     const payload = {
       url: this.url,
       spec:this.spec,
-        env_variable1: this.env_variable1,
-        env_variable2: this.env_variable2
+      env_variable1: this.env_variable1,
+      env_variable2: this.env_variable2
     };
     this.testResultsService.executeTests(payload).subscribe({
       next:(data)=>{
@@ -67,7 +74,7 @@ export class TechOrchestratorComponent implements OnInit {
         setTimeout(()=> {
           const element=document.getElementById('resultSummaryId');
           element?.scrollIntoView({behavior:'smooth'});
-        }, 2000);
+        }, 5000);
         //this.spinner.hide();
 
         this.viewportScroller.scrollToAnchor("resultSummaryId")
@@ -100,6 +107,7 @@ export class TechOrchestratorComponent implements OnInit {
    
     this.pieChart=new Chart({
       chart: {
+        renderTo:'pieChart',
         width:500,
         height:500,
         type: 'pie',
@@ -173,7 +181,9 @@ export class TechOrchestratorComponent implements OnInit {
 
     
 
-    })
+    }
+  )
+  console.log('Initializing pie chart with data',this.resultSummary);
   }
   initializebarChart():void{
   this.barChart=new Chart({

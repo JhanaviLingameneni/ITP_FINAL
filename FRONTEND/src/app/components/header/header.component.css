@@ -167,6 +167,16 @@ mat-divider {
   background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
 }
 
-
+:host ::ng-deep .p-button{
+  color: white;
+  justify-content: right;
+  display: flex;
+  background-color: transparent;
+  cursor: pointer;
+  border: none !important;
+}
+.right-align{
+  margin-left: auto;
+}
 
 

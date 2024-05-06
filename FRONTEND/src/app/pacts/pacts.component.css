@@ -155,6 +155,16 @@ mat-toolbar {
     justify-content: center;
     display: flex;
   }
-  
+  :host ::ng-deep .p-button{
+    color: white;
+    justify-content: right;
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    border: none !important;
+  }
+  .right-align{
+    margin-left: auto;
+  }
   
   

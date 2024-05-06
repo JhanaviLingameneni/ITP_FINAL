@@ -2,6 +2,8 @@
 <router-outlet></router-outlet>
 <mat-toolbar class="mat-elevation-z8">
   <h3>ITP Dashboard</h3>
+  <div class="right-align">
+    <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button></div>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
@@ -50,16 +52,18 @@
       <label class="input3">env_variable1</label>
       <input type="text" list="env1Options" [(ngModel)]="env_variable1" required>
       <datalist id="env1Options">
-        <option value="grepTags=@fvt"></option>
+        <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
         <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+        <option value="grepTags=@fvt"></option>
       </datalist>
     </div>
     <div>
       <label class="input4">env_variable2</label>
       <input type="text" list="env2Options" [(ngModel)]="env_variable2" required>
       <datalist id="env2Options">
-        <option value="grepTags=@fvt"></option>
+        <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
         <option value="XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+        <option value="grepTags=@fvt"></option>
       </datalist>
     </div>
     <ngx-spinner 
@@ -78,14 +82,17 @@
 <div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary"></div>
 <div *ngIf="testExecuted">
   <h3 >Results summary </h3>
-</div>
-</div>
-<div class="chart-container">
-  <div class="charts">
-    <div class="pie" [chart]="pieChart"></div>
-    <div class="bar"[chart]="barChart"></div>
+  <div class="chart-container">
+    <div class="charts">
+      <div id="pieChart" style="width:100%"; 
+      height:400px;></div>
+      <div class="pie" [chart]="pieChart"></div>
+      <div class="bar"[chart]="barChart"></div>
+    </div>
   </div>
 </div>
+</div>
+
 </router-outlet>
 </div>
 </mat-sidenav-content>

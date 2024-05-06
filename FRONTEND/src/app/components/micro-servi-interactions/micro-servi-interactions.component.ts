@@ -65,6 +65,11 @@ export class MicroServiInteractionsComponent {
   constructor(private router:Router,
     private dataService:DataService
   ){}
+  logOut() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
+
   executeInteraction(): void {
     this.router.navigate(['/pact-data']);
     
