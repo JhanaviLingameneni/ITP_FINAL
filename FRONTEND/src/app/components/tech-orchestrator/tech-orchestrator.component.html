@@ -65,22 +65,24 @@
 <p style="font-size:20px; color: white" > Loading... </p>
 </ngx-spinner>
     <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env">Execute Tests</button>
+    <div class="chart-container">
+      <canvas  id="MyChart" >{{ pieChart }}</canvas>
+    </div>
   </mat-card-content>
+  
 </mat-card>
+
 </div>
 <div class="result-summary-container">
-<ngx-spinner *ngIf="isLoading"...></ngx-spinner>
-<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary"></div>
+ 
+<ngx-spinner *ngIf="isLoading"...>
+  </ngx-spinner>
+<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary">
+ 
 <div *ngIf="testExecuted">
+ </div>
   <h3 >Results summary </h3>
-  <div class="chart-container">
-    <div class="charts">
-      <div id="pieChart" style="width:100%"; 
-      height:400px;></div>
-      <div class="pie" [chart]="pieChart"></div>
-      <div class="bar"[chart]="barChart"></div>
-    </div>
-  </div>
+  
 </div>
 </div>
 

@@ -16,7 +16,7 @@ export class DataService {
     
     return this.http.post<any>(this.apiUrl, {
       consumer: "auth-oidc",
-      producer: "org",
+      provider: "org",
       
     });
   }
