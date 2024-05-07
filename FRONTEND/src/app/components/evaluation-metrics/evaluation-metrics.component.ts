@@ -8,6 +8,7 @@ import * as Highcharts from 'highcharts';
 import { ChartModule } from 'angular-highcharts';
 import { Options, SeriesOptionsType } from 'highcharts';
 import { TestResultsService } from './results.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,13 @@ export class EvaluationMetricsComponent implements OnInit {
     private viewportScroller: ViewportScroller,
     private testResultsService: TestResultsService,
     private dataService: DataService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+  private router:Router) { }
+    logOut() {
+      sessionStorage.clear();
+      this.router.navigate(['login']);
+    }
+  
     ngOnInit(): void {
       this.initializePieChart();
       this.initializebarChart();
