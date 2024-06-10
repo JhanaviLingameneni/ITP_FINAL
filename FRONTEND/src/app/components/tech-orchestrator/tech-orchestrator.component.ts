@@ -27,10 +27,10 @@ export interface UserData{
 }
 const ELEMENT_DATA:UserData[]=[
   {
-    url:'',
-    spec:'',
-    env:'',
-    Status:'',
+    url:'abc',
+    spec:'afghc',
+    env:'bwdcs',
+    Status:'Active',
     lastActivity:new Date().toISOString()
   },
 ];

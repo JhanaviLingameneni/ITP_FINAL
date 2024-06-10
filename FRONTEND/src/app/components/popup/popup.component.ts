@@ -17,7 +17,7 @@ import EventEmitter from 'events';
   styleUrl: './popup.component.css'
 })
 export class PopupComponent implements OnInit {
-  @Output() formData=new EventEmitter<any>();
+  
   url: string = '';
   spec: string = '';
   env: string='';
@@ -87,7 +87,7 @@ onAdd():void {
     Status:'Active',
     lastActivity: new Date().toISOString()
   };
-  this.formData.emit(data);
+ 
   this.dialogRef.close();
 }
  
