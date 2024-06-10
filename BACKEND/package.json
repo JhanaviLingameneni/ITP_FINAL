@@ -1,13 +1,13 @@
 {
   "name": "backend3",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test:consumer": "npx jest consumer.test.js",
     "pact:publish": "pact-broker publish pacts --consumer-app-version 12.4.0 --broker-base-url http://localhost:9292",
     "test:provider": "npx jest provider.test.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,8 +21,11 @@
     "mongoose": "^8.3.0"
   },
   "devDependencies": {
+    "@pact-foundation/pact-node": "^10.18.0",
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "uuid": "^9.0.1"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }

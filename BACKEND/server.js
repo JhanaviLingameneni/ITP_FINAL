@@ -6,7 +6,7 @@ const { startDockerCompose, runDockerExec } = require('./apis/dockerRunCommands'
 
 const cors = require('cors');
 const fs=require('fs');
-
+let allResults=[];
 const app = express();
 const port = 5000;
 const mongoose = require('mongoose');
@@ -23,6 +23,45 @@ app.use(cors({
   }),bodyParser.json(), bodyParser.urlencoded({ extended: true }), express.json());
 
 app.post('/api/v1/runCypress', runCypressCommand);
+app.post('/api/v1/runCypress', (req, res) => {
+    const newResults = req.body;
+  console.log('Received new results:', newResults);
+
+  // Read existing results from the file
+  fs.readFile(resultsFilePath, 'utf8', (readErr, data) => {
+    if (readErr && readErr.code !== 'ENOENT') {
+      console.error('Error reading results file:', readErr);
+      return res.status(500).send('Failed to read results');
+    }
+
+    console.log('Existing data read from file:', data);
+    let allResults = [];
+    if (data) {
+      try {
+        allResults = JSON.parse(data);
+        console.log('Parsed existing results:', allResults);
+      } catch (parseErr) {
+        console.error('Error parsing results file:', parseErr);
+        return res.status(500).send('Failed to parse results');
+      }
+    }
+
+    // Append new results to the existing results
+    allResults.push(newResults);
+    console.log('Updated results:', allResults);
+
+    // Write updated results back to the file
+    fs.writeFile(resultsFilePath, JSON.stringify(allResults, null, 2), writeErr => {
+      if (writeErr) {
+        console.error('Error writing results file:', writeErr);
+        return res.status(500).send('Failed to store results');
+      }
+
+      console.log('Results written to file successfully');
+      res.send('Results stored successfully');
+    });
+  });
+  });
 
 app.post('/api/v1/runContract', (req, res) => {
     const { consumer, provider } = req.body;
@@ -33,7 +72,7 @@ app.post('/api/v1/runContract', (req, res) => {
     const contractFile = '/root/XC1/xc1p-auth-oidc/sourceCode/pacts/auth-oidc-organizations.json';
     const contractDestFile = '/root/XC1/xc1p-organizations/sourceCode/pacts/auth-oidc-organizations.json';
 
-    if (!consumer || !provider) {
+    if (!consumer || !producer) {
         res.status(400).json({ status: 'fail', message: 'Missing required parameters' });
         return;
     }
@@ -133,7 +172,16 @@ app.use(express.json())
 
 const routes = require('./apis/routes')
 app.use('/api', routes)
-
+app.get('/api.testResults', async(req,res)=>{
+    try{
+        const results=await fetchTestResults();
+        res.json(results);
+    }
+    catch(error){
+        res.setHeader('Content-Type', 'application/json');
+        res.status(500).send('Failed to fetch results');
+    }
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/test-results', (req,res)=> {
@@ -143,6 +191,7 @@ app.get('/test-results', (req,res)=> {
         }
         else {
             res.setHeader('Content-Type', 'application/json');
+            allResults=JSON.parse(data) || [];
             res.send(data);
         }
     });

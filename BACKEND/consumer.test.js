@@ -1,4 +1,4 @@
-const { Pact, Matchers } = require('@pact-foundation/pact');
+const { Pact, Matchers } = require('node_modules\@pact-foundation\pact-node\src\index.js');
 const { like } = Matchers;
 const axios = require('axios');
 

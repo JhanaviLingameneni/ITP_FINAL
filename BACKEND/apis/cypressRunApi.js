@@ -4,8 +4,10 @@ const axios = require('axios');
 const app = express();
 const uuid = require('uuid');
 const fs=require('fs');
+
 global.testResults=null;
 global.latestTestResult=testResults;
+
 module.exports = function runCypressCommand (req, res) {
     const VALID_ATTRIBUTE = ["spec", "url", "env"]
     const DATA = req.body
@@ -17,6 +19,7 @@ module.exports = function runCypressCommand (req, res) {
     const REQ_VALUE = Object.values(DATA)
     console.log(DATA.url)
     let isString = value => typeof value === 'string' || value instanceof String;
+
     for (var i = 0; i < REQ_ATTRIBUTE.length; i++) {
         if (!VALID_ATTRIBUTE.includes(REQ_ATTRIBUTE[i])) {
             console.log("Invalid attribute: ", REQ_ATTRIBUTE[i])
@@ -39,7 +42,6 @@ module.exports = function runCypressCommand (req, res) {
     if (!DATA.url) {
         res.status(400).json({ status: 'warn', message: 'A request attribute is missing: url is not defined' });
         return
-
     } else if (DATA.url && !DATA.spec && !DATA.env) {
         var cypressCommand = `npx cypress run --config  baseUrl=${DATA.url}`;
         var commandConfig = {
@@ -84,13 +86,11 @@ module.exports = function runCypressCommand (req, res) {
         // Get the value of the target key
         var targetValue = ENV_VAR["grepTags"];
         console.log(`The value of "grepTags" is:`, targetValue);
-      } else {
+    } else {
         var targetValue = "@fvt"
         console.log(`No specific tag mention, The key "grepTags" is FVT (Full FVT Test).`);
-      }
+    }
     const cypress = require('cypress')
-    //;(async () => {
-        //const testResults = await cypress.run(commandConfig)
     cypress.run(commandConfig).then(testResults => {
         res.setHeader('jobId', '1');
         res.setHeader('Content-Type', 'application/json');
@@ -98,65 +98,66 @@ module.exports = function runCypressCommand (req, res) {
         const randomUUID = uuid.v4();
         console.log("randomUUID: ",randomUUID)
         if (testResults.failures) {
-            console.error('Could not execute tests')
-            console.error(testResults.message)
-            res.status(500).json({ status: 'fail', message: testResults.message + " Kindly check your server status or spec path" })
-            //process.exit(testResults.failures)
-        }else if(testResults.totalFailed != 0 ){
-            console.log('passed %d tests, failed %d tests',testResults.totalPassed, testResults.totalFailed)
-                console.log('Test Results:',{
-                    "status": "Partial pass",
-                    "message": 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed + '; Failed: ' + testResults.totalFailed,
-                    "testDuration": testResults.totalDuration,
-                    "TotalSuites": testResults.totalSuites,
-                    "Totaltests": testResults.totalTests,
-                    "TotalPassed": testResults.totalPassed,
-                    "TotalFailed": testResults.totalFailed,
-                    "TotalPending": testResults.totalPending,
-                    "TotalSkipped": testResults.totalSkipped,
-                    "Component": targetValue,
-                    "uuid": randomUUID
-                })
-                global.testResults=testResults;
-        
-                  
-                
-
+            console.error('Could not execute tests');
+            console.error(testResults.message);
+            res.status(500).json({ status: 'fail', message: testResults.message + " Kindly check your server status or spec path" });
+        } else if (testResults.totalFailed !== 0) {
+            console.log('passed %d tests, failed %d tests', testResults.totalPassed, testResults.totalFailed);
+            console.log('Test Results:', {
+                "status": "Partial pass",
+                "message": 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed + '; Failed: ' + testResults.totalFailed,
+                "testDuration": testResults.totalDuration,
+                "TotalSuites": testResults.totalSuites,
+                "Totaltests": testResults.totalTests,
+                "TotalPassed": testResults.totalPassed,
+                "TotalFailed": testResults.totalFailed,
+                "TotalPending": testResults.totalPending,
+                "TotalSkipped": testResults.totalSkipped,
+                "Component": targetValue,
+                "uuid": randomUUID
+            });
+            global.testResults = testResults;
+            const testResultsString = JSON.stringify(testResults, null, 2);
+            fs.writeFile('cypress-results.json', testResultsString, (err) => {
+                if (err) {
+                    console.error('Error writing test result to file:', err);
+                    res.status(500).json({ status: 'error', message: 'Failed to write test result to file' });
+                } else {
+                    res.status(206).json({ status: 'partial-pass', message: 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed });
+                }
+            });
+//          res.status(206).json({ status: 'partial-pass', message: 'Cypress tests executed partially; Passed: ' + testResults.totalPassed + '; Failed: ' + testResults.totalFailed });
+        } else {
+            console.log('passed %d tests, failed %d tests', testResults.totalPassed, testResults.totalFailed);
+            console.log('Test Results:', {
+                "status": "Pass",
+                "message": 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed + '; Failed: ' + testResults.totalFailed,
+                "testDuration": testResults.totalDuration,
+                "TotalSuites": testResults.totalSuites,
+                "Totaltests": testResults.totalTests,
+                "TotalPassed": testResults.totalPassed,
+                "TotalFailed": testResults.totalFailed,
+                "TotalPending": testResults.totalPending,
+                "TotalSkipped": testResults.totalSkipped,
+                "Component": targetValue,
+                "uuid": randomUUID
+            });
+            global.testResults = testResults;
+            const testResultsString = JSON.stringify(testResults, null, 2);
+            fs.writeFile('cypress-results.json', testResultsString, (err) => {
+                if (err) {
+                    console.error('Error writing test result to file:', err);
+                    res.status(500).json({ status: 'error', message: 'Failed to write test result to file' });
+                } else {
+                    res.status(200).json({ status: 'pass', message: 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed });
+                    res.json(testResults);
+                }
+            });
+           module.exports = runCypressCommand;
         }
-         else {
-            console.log('passed %d tests, failed %d tests', testResults.totalPassed, testResults.totalFailed)
-            
-                console.log('Test Results:',{
-                    "status": "Pass",
-                    "message": 'Cypress tests executed successfully; Passed: ' + testResults.totalPassed + '; Failed: ' + testResults.totalFailed,
-                    "testDuration": testResults.totalDuration,
-                    "TotalSuites": testResults.totalSuites,
-                    "Totaltests": testResults.totalTests,
-                    "TotalPassed": testResults.totalPassed,
-                    "TotalFailed": testResults.totalFailed,
-                    "TotalPending": testResults.totalPending,
-                    "TotalSkipped": testResults.totalSkipped,
-                    "Component": targetValue,
-                    "uuid": randomUUID
-
-                })
-                    global.testResults=testResults;
-        const testResultsString=JSON.stringify(testResults,null,2);
-        fs.writeFile('cypress-results.json', testResultsString, (err)=>{
-            if(err){
-                console.error('Error writing test result to file:', err);
-                res.status(500).json({status:'error', message:'Failed to write test result to file'});
-            }
-            else{
-                res.json(testResults);
-            }
-        });
-                  
-                
-        }
-    }).catch(err => {
-         console.error(err.message)
-         res.status(500).json({ status: 'fail', message: err.message })
-         //process.exit(1)
- })
-};
+    })
+    .catch(err => {
+        console.error(err.message);
+        res.status(500).json({ status: 'fail', message: err.message });
+    });
+}
