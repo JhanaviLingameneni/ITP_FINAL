@@ -6,7 +6,9 @@
   
   <h3>ITP Dashboard</h3>
   <div class="right-align">
-    <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button></div>
+    <button mat-button [matMenuTriggerFor]="menu" class="profile-button"><mat-icon class="profile-icon" style= "font-size: 20px" >account_circle</mat-icon></button>
+    <mat-menu #menu="matMenu">
+    <p-button mat-button  class="sign-out-button" (onClick)="logOut()"><mat-icon>exit_to_app</mat-icon> SignOut</p-button></mat-menu></div>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">

@@ -36,7 +36,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PactsComponent } from './pacts/pacts.component';
 import { PactDataComponent } from './pact-data/pact-data.component';
-import {MatTableModule} from '@angular/material/table'
+import {MatTableModule} from '@angular/material/table';
+import { PopupComponent } from './components/popup/popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 
 
@@ -55,6 +58,8 @@ import {MatTableModule} from '@angular/material/table'
     MicroServiInteractionsComponent,
     PactsComponent,
     PactDataComponent,
+    PopupComponent,
+    PieChartComponent,
     
     
   ],
@@ -83,7 +88,8 @@ import {MatTableModule} from '@angular/material/table'
     CanvasJSAngularChartsModule,
     ChartModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

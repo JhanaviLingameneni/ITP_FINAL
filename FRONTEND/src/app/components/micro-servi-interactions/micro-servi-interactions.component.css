@@ -291,7 +291,7 @@ mat-divider {
   display: flex;
   height: 100%;
 }
-.p-button{
+:host ::ng-deep .p-button .but{
   color: white;
   justify-content: right;
   display: flex;

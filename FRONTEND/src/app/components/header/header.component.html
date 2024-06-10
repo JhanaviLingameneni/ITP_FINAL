@@ -4,7 +4,7 @@
 <mat-toolbar class="mat-elevation-z8">
   
   
-  <h3>ITP Dashboard</h3>
+  <h2 class="cc">Lenovo</h2>
   <div class="right-align">
     <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button></div>
 </mat-toolbar>
@@ -15,10 +15,7 @@
 
     <mat-divider></mat-divider>
 
-    <a mat-button mat-button class="menu-button" routerLink="/evaluation-metrics">
-      <mat-icon class="hom">home</mat-icon>
-      <span class="elm">Evaluation Metrics</span>
-    </a>
+    
     <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
       <mat-icon class="to">slideshow</mat-icon>
       <span class="teO">Test Orchestrator</span>
@@ -27,7 +24,7 @@
     <a>
     <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
       <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
-      <span  class="ms">Micro Service Interactions 
+      <span  class="ms">Contract Testing  
         
       </span></div>
     </button></a>

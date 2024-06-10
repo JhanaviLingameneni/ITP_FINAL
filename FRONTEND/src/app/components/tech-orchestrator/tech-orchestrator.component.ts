@@ -11,8 +11,29 @@ import { Router } from '@angular/router';
 import { text } from 'body-parser';
 import { ChartOptions, ChartType } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../popup/popup.component';
+import { PieChartComponent } from '../../pie-chart/pie-chart.component';
 
 
+export interface UserData{
+  url:string;
+  spec:string;
+  env:string;
+  Status:string;
+  lastActivity:any;
+
+}
+const ELEMENT_DATA:UserData[]=[
+  {
+    url:'',
+    spec:'',
+    env:'',
+    Status:'',
+    lastActivity:new Date().toISOString()
+  },
+];
 
 @Component({
   selector: 'app-tech-orchestrator',
@@ -21,6 +42,7 @@ import Chart from 'chart.js/auto';
   template: ' <div [chart]="pieChart"></div>'
 })
 export class TechOrchestratorComponent implements OnInit {
+  displayedColumns: string[]=['url','spec','env','Status','lastActivity']
   
   url: string = '';
   spec: string = '';
@@ -34,20 +56,52 @@ export class TechOrchestratorComponent implements OnInit {
   chartOptions: Highcharts.Options={};
   runResults:any[]=[];
   name:string='';
+  dataSource= new MatTableDataSource<UserData>(ELEMENT_DATA);
   y:any;
   color:string='';
   constructor(
+    public dialog: MatDialog,
     private spinner: NgxSpinnerService,
     private viewportScroller: ViewportScroller,
     private testResultsService: TestResultsService,
     private router: Router,
     private http: HttpClient) {}
-    logOut() {
+    applyFilter(event:Event ){
+      const filterValue=(event.target as HTMLInputElement).value;
+      this.dataSource.filter=filterValue.trim().toLocaleLowerCase();
+    }
+    onAdd():void{
+      const data:UserData={
+        url:this.url,
+        spec:this.spec,
+        env:this.env,
+        Status:'Active',
+        lastActivity:new Date().toISOString()
+      };
+      this.dataSource.data=[...this.dataSource.data, data];
+    }
+    Openpopup():void {
+      const dialogRef=
+     this.dialog.open(PopupComponent,{
+      width:'600px'
+     });
+     
+     dialogRef.afterClosed().subscribe(result=> {
+      console.log('Dialog closed');
+      this.refreshTable();
+     });
+    }
+   
+    refreshTable():void {
+      this.dataSource.filter='';
+    }
+
+    logOut() :void{
       sessionStorage.clear();
       this.router.navigate(['login']);
     }
     ngOnInit(): void { 
-      this.initializePieChart();
+      
     }
    testExecuted: boolean=false;
   executeTests():void {
@@ -62,13 +116,13 @@ export class TechOrchestratorComponent implements OnInit {
       spec:this.spec,
       env:this.env,
     };
-    this.testResultsService.getStoredResults().subscribe({
+    this.testResultsService.executeTests(payload).subscribe({
       next:(data)=>{
         this.resultSummary='Tests executed successfully';
         this.resultSummary={
           totalDuration: data.totalDuration,
-          totalPassed: data.totalPassed,
-          totalFailed: data.totalFailed,
+          totalPassed: data.TotalPassed,
+          totalFailed: data.TotalFailed,
           totalPending: data.totalPending,
           totalSkipped: data.totalSkipped,
           totalSuites: data.totalSuites,
@@ -80,6 +134,7 @@ export class TechOrchestratorComponent implements OnInit {
           const element=document.getElementById('resultSummaryId');
           element?.scrollIntoView({behavior:'smooth'});
         }, 2000);
+        
         this.viewportScroller.scrollToAnchor("resultSummaryId")
         this.testExecuted=true; 
         
@@ -90,31 +145,6 @@ export class TechOrchestratorComponent implements OnInit {
         console.error('Error fetching test results', error);
         this.spinner.hide();
       } 
-  });
-}
-initializePieChart():void{
-  this.pieChart = new Chart("MyChart", {
-    type: 'pie', //this denotes tha type of chart
-
-    data: {// values on X-Axis
-      labels: ['Total Passed', 'Total Failed','Total Pending','Total Skipped','Total Suites' ],
-       datasets: [{
-  
-  data: [12, 1, 1, 0, 1],
-  backgroundColor: [
-    'Green',
-    'Red',
-    'orange',
-    'yellow',
-    'blue',			
-  ],
-  hoverOffset: 4
-}],
-    },
-    options: {
-      aspectRatio:2.5
-    }
-
   });
 }
 

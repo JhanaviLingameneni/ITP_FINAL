@@ -1,0 +1,47 @@
+
+<div class="test-runner-container">
+  <mat-card class="cardd" >
+    <mat-card-content>
+    <h3 class="headd">TestOps Platform</h3>
+    
+    <div>
+      
+      <label class="input1">Base url</label>
+      <input type="text" list="urlOptions" [(ngModel)]="url" required>
+      <datalist id="urlOptions">
+        <option value="https://example.cypress.io/todo"></option>
+      </datalist>
+    </div>
+    <div>
+      <label class="input2">Spec</label>
+      <input type="text" list="specOptions" [(ngModel)]="spec"required>
+      <datalist id="specOptions">
+        <option value="cypress/e2e/1-getting-started/"></option>
+      </datalist>
+    </div>
+    <div>
+      <label class="input3">env</label>
+      <input type="text" list="env1Options" [(ngModel)]="env" required>
+      <datalist id="env1Options">
+        <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+        
+      </datalist>
+    </div>
+    <div class="buttons-container">
+    <button class="buttonss"(click)="executeTests()"[disabled]="!url || !spec || !env">Execute Tests</button>
+    <div mat-dialog-actions>
+      <button class="obutton" mat-button mat-dialog-close>Cancel</button>
+      <form>
+      <button class="tbuttons" mat-button color="primary" [mat-dialog-close]="true" (click)="onAdd()" >Add</button>
+    </form>
+    </div>
+  </div>
+
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-scale-multiple"></ngx-spinner>
+  <div *ngIf="isResultsReady" class="results-ready">Results Ready</div>
+
+  </mat-card-content>
+  
+</mat-card>
+
+</div>

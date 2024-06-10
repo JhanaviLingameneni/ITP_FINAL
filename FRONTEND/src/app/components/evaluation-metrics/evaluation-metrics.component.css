@@ -177,5 +177,29 @@ mat-toolbar {
   .right-align{
     margin-left: auto;
   }
+  .profile-icon{
+  
+    color: white;
+    flex-shrink: 0;
+    height: 24px;
+  }
+  .profile-button{
+    height: 60px;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .sign-out-button{
+    background: whitesmoke;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
   
   

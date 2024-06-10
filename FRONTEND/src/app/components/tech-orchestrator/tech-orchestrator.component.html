@@ -1,24 +1,25 @@
 
 <router-outlet></router-outlet>
 <mat-toolbar class="mat-elevation-z8">
-  <h3>ITP Dashboard</h3>
+  <h2 class="cc">Lenovo</h2>
   <div class="right-align">
-    <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button></div>
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon class="proicon">account_circle</mat-icon>
+    </button>
+    <mat-menu #profileMenu="matMenu">
+    <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button> </mat-menu></div>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
     <mat-divider></mat-divider>
-    <a mat-button mat-button class="menu-button" routerLink="/evaluation-metrics">
-      <mat-icon class="hom">home</mat-icon>
-      <span class="elm">Evaluation Metrics</span>
-    </a>
+   
     <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
       <mat-icon class="to">slideshow</mat-icon>
       <span class="teO">Test Orchestrator</span>
     </a>
     <a mat-button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
       <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
-      <span  class="ms">Micro Service Interactions 
+      <span  class="ms">Contract Testing 
       </span></div>
     </a>
     <mat-menu #menu="matMenu" class="sub" >
@@ -30,60 +31,88 @@
   <mat-sidenav-content style="overflow-y: auto;">
     <div class="content">
       <router-outlet>
-<div class="test-runner-container">
-  <mat-card class="cardd" >
-    <mat-card-content>
-    <h3 class="headd">TestOps Platform</h3>
-    <div>
-      <label class="input1">Base url</label>
-      <input type="text" list="urlOptions" [(ngModel)]="url" required>
-      <datalist id="urlOptions">
-        <option value="https://example.cypress.io/todo"></option>
-      </datalist>
-    </div>
-    <div>
-      <label class="input2">Spec</label>
-      <input type="text" list="specOptions" [(ngModel)]="spec"required>
-      <datalist id="specOptions">
-        <option value="cypress/e2e/1-getting-started/"></option>
-      </datalist>
-    </div>
-    <div>
-      <label class="input3">env</label>
-      <input type="text" list="env1Options" [(ngModel)]="env" required>
-      <datalist id="env1Options">
-        <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
-        
-      </datalist>
-    </div>
-   
-    <ngx-spinner 
-      bdColor = "rgba(0, 0, 0, 0.8)" 
-      size = "medium" 
-      color = "#fff" 
-      type = "ball-spin">
-<p style="font-size:20px; color: white" > Loading... </p>
-</ngx-spinner>
-    <button class="buttons"(click)="executeTests()"[disabled]="!url || !spec || !env">Execute Tests</button>
-    <div class="chart-container">
-      <canvas  id="MyChart" >{{ pieChart }}</canvas>
-    </div>
-  </mat-card-content>
-  
-</mat-card>
 
+  <div class="chan">
+    <span class="chan">Collections</span>
+  </div>
+ 
+  
+  <div class="table-container">
+    <mat-form-field class="search-form-field" appearance="standard">
+      <mat-label class="search-label">Search for anything    </mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    
+    <button mat-icon-button matSuffix
+    (click)="refreshTable()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button style="margin-left: 60%;"(click)="Openpopup()" color="primary">+</button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    
+    
+    
+    
+    
+    </table>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div *ngIf="resultsReady">
+    </div>
+    </mat-form-field>
+ 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- url Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> url </th>
+      <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    </ng-container>
+
+    <!-- spec Column -->
+    <ng-container matColumnDef="spec">
+      <th mat-header-cell *matHeaderCellDef> spec </th>
+      <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
+    </ng-container>
+
+     <!-- env Column -->
+     <ng-container matColumnDef="env">
+      <th mat-header-cell *matHeaderCellDef> env </th>
+      <td mat-cell *matCellDef="let element"> {{element.env}} </td>
+    </ng-container>
+
+     <!-- Status Column -->
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon color="primary">check_circle</mat-icon>
+      <mat-icon color="accent">star</mat-icon>
+    </td>
+  </ng-container>
+
+  <!-- Last Activity Column -->
+  <ng-container matColumnDef="lastActivity">
+    <th mat-header-cell *matHeaderCellDef> Last activity </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastActivity}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<app-pie-chart></app-pie-chart>
 </div>
+
+
+
+
+
+  
+  
+
+
+
 <div class="result-summary-container">
  
 <ngx-spinner *ngIf="isLoading"...>
   </ngx-spinner>
-<div id="resultSummaryId" *ngIf="!isLoading && resultsReady" class="results-summary">
- 
-<div *ngIf="testExecuted">
- </div>
-  <h3 >Results summary </h3>
-  
-</div>
+
 </div>
 
 </router-outlet>

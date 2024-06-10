@@ -10,8 +10,13 @@ import { TechOrchestratorComponent } from './components/tech-orchestrator/tech-o
 import { MicroServiInteractionsComponent } from './components/micro-servi-interactions/micro-servi-interactions.component';
 import { PactsComponent } from './pacts/pacts.component';
 import { PactDataComponent } from './pact-data/pact-data.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 const routes: Routes = [
+  {
+    path:'Pie',
+    component:PieChartComponent
+  },
   {
     path: 'login',
     component: LoginComponent,

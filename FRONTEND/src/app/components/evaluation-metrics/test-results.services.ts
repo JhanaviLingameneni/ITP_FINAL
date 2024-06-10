@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class TestResultsService {
   private testResultsUrl = 'http://localhost:5000/api/v1/runCypress'; // Use your actual backend URL
-  private storedResults = 'http://localhost5000/testResults'
+  
+  private resultUrl='http://localhost5000/testResults';
 
   constructor(private http: HttpClient) {}
   
  getStoredResults(): Observable<any>{
-  return this.http.get(this.storedResults);
-
+  return this.http.get(this.resultUrl);
  }
+
   executeTests(payload:any):Observable<any>{
     return this.http.post(this.testResultsUrl,payload);
-  }
-
+  } 
 }

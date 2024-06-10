@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+   
+  }
+  
+  .chart-card {
+    max-width: 1000px;
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 5px 9px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: rgb(227, 222, 222);
+   
+  }
+  
+  #MyChart {
+    display: block;
+    margin: auto;
+  }
