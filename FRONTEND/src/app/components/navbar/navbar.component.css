@@ -1,0 +1,35 @@
+/* Navbar styles */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-button {
+  color: white;
+}
+
+.user-button mat-icon {
+  margin-right: 0.5rem;
+}
+
+.user-button .dropdown-icon {
+  margin-left: 0.5rem;
+}
+
+.user-button:hover {
+  color: #0a0a0a;
+}
+
+
+
+
+

@@ -1,0 +1,19 @@
+<mat-toolbar >
+  <span class="navbar-brand">XClarity One svg</span>
+  <span class="spacer"></span>
+  <div class="user-section">
+    <button mat-button [matMenuTriggerFor]="menu" class="user-button">
+      <mat-icon>person</mat-icon>
+      <span>User</span>
+      
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+

@@ -1,0 +1,63 @@
+
+<div class="content-wrapper">
+<mat-toolbar  ngSkipHydration class="toolbar" >
+    <span class="navbar-brand">Intelligent TestOps Platform</span>
+    <span class="spacer"></span>
+    <div class="user-section">
+      <button mat-button [matMenuTriggerFor]="menu" class="user-button">
+        <mat-icon>person</mat-icon>
+        <span>User</span>
+        
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  
+  
+  
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="cc">L</span>
+    </div>
+    <div class="sidebar-menu">
+      <a class="sidebar-item" routerLink="/home">
+        <mat-icon>group_work</mat-icon>
+        <span class="st">Test Orchestrator</span>
+      </a>
+      <a class="sidebar-item" routerLink="/micro-servi-interactions">
+        <mat-icon>build</mat-icon>
+        <span class="st">Service Interactions</span>
+      </a>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    
+    
+    <app-pie-chart id="trends"></app-pie-chart>
+    <!-- Right sidebar -->
+    <div class="right-sidebar">
+        <a class="sidebar-button" routerLink="/home" routerLinkActive="active">
+          <mat-icon>dashboard</mat-icon>
+          <span class="b">Overview</span>
+        </a>
+        <a class="sidebar-button" routerLink="/trends" routerLinkActive="active" >
+          <mat-icon>insights</mat-icon>
+          <span class="b">Trends</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+  
+    
+    
+  
+  
+  
