@@ -63,6 +63,7 @@ app.post('/api/v1/runCypress', (req, res) => {
   });
   });
 
+
 app.post('/api/v1/runContract', (req, res) => {
     const { consumer, provider } = req.body;
     const composeFilePath = '/root/XC1/dev-tools/test/docker-compose.yaml';
@@ -72,7 +73,7 @@ app.post('/api/v1/runContract', (req, res) => {
     const contractFile = '/root/XC1/xc1p-auth-oidc/sourceCode/pacts/auth-oidc-organizations.json';
     const contractDestFile = '/root/XC1/xc1p-organizations/sourceCode/pacts/auth-oidc-organizations.json';
 
-    if (!consumer || !producer) {
+    if (!consumer || !provider) {
         res.status(400).json({ status: 'fail', message: 'Missing required parameters' });
         return;
     }

@@ -1,4 +1,4 @@
-const { Pact, Matchers } = require('node_modules\@pact-foundation\pact-node\src\index.js');
+const { Pact, Matchers } = require('node_modules/@pact-foundation/pact-node/src/index.js');
 const { like } = Matchers;
 const axios = require('axios');
 
@@ -26,7 +26,9 @@ describe('Pact with OurProvider', () => {
         },
         willRespondWith: {
           status: 200,
-          body: like([{ id: 1, name: 'user' }])
+          body: like([{ id: 1, name: 'user' },
+            {id: 2, name: 'users'}
+          ])
         }
       };
       return provider.addInteraction(interaction);
@@ -34,7 +36,9 @@ describe('Pact with OurProvider', () => {
 
     it('will receive the list of current users', () => {
       return axios.get('http://localhost:1234/users').then(response => {
-        expect(response.data).toEqual([{ id: 1, name: 'user' }]);
+        expect(response.data).toEqual([{ id: 1, name: 'user' },
+        {id: 2, name: 'users'}
+        ]);
       });
     });
   });

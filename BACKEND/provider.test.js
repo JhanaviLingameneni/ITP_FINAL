@@ -26,7 +26,7 @@ jest.setTimeout(10000)
 describe('Pact Verification', () => {
   it('validates the expectations of OurConsumer', () => {
     return new Verifier({
-      provider: 'YourProvider',
+      provider: 'org',
       logLevel: 'INFO',
       pactBrokerUrl: 'http://localhost:9292',
       providerBaseUrl: 'http://localhost:5000',
