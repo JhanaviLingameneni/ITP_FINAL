@@ -11,6 +11,12 @@ import { MicroServiInteractionsComponent } from './components/micro-servi-intera
 import { PactsComponent } from './pacts/pacts.component';
 import { PactDataComponent } from './pact-data/pact-data.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { TestOrchestratorComponent } from './components/test-orchestrator/test-orchestrator.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { TrendsComponent } from './components/trends/trends.component';
+
 
 const routes: Routes = [
   {
@@ -65,6 +71,26 @@ const routes: Routes = [
   {
     path:'pact-data',
     component:PactDataComponent
+  },
+  {
+    path:'to',
+    component:TestOrchestratorComponent
+  },
+  {
+    path:'sidebar',
+    component:SidebarComponent
+  },
+  {
+    path:'navbar',
+    component:NavbarComponent
+  },
+  {
+    path:'sidenav',
+    component:SidenavComponent
+  },
+  {
+    path:'trends',
+    component:TrendsComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'

@@ -1,0 +1,209 @@
+.content-wrapper{
+  background-color: whitesmoke;
+}
+  
+ .sidebar {
+    width: 100px; /* Adjust this value to match the desired width */
+    height: 100%; /* Ensure it covers the full viewport height */
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+  }
+  
+  .sidebar-header {
+    padding: 1rem;
+    background-color: #444;
+    text-align: center; /* Center the title */
+    margin-bottom: 30px;
+  }
+  
+  .cc {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 28px; /* Adjust font size if necessary */
+    margin: 0 auto;
+    height: 46px;
+    width: 46px;
+  }
+  .st{
+    font-size: 13px;
+  }
+  
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #575757;
+  }
+  
+  .sidebar-item mat-icon {
+    margin-right: 10px;
+    font-size: 20px; /* Adjust icon size if necessary */
+  }
+
+
+  /* Navbar styles */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 85px;
+  }
+  .toolbar{
+    background-color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .user-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-button {
+    color: rgb(15, 15, 15);
+  }
+  
+  .user-button mat-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .user-button .dropdown-icon {
+    margin-left: 0.5rem;
+  }
+  
+  .user-button:hover {
+    color: #0a0a0a;
+  }
+  .toolbar{
+    margin-top: 0;
+  }
+
+
+
+
+  .example-card {
+    margin: 20px;
+    padding: 20px;
+    max-width: 80%;
+    box-shadow: 0 8px 16px -2px rgba(0,0,0,0.2);
+    background-color: white;
+    margin-left: 110px;
+    
+  }
+  
+  .table-container {
+    padding: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    box-shadow: 0 8px 16px -4px rgba(0,0,0,0.2);
+  }
+  .pb{
+    background-color: rgb(71, 71, 204);
+    color: white;
+    margin-left: 660px;
+    font-size: 20px;
+  }
+  
+  
+  .mat-toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .filter-field {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .mat-card-title{
+    text-align: center;
+    align-items: center;
+  }
+  .sto{
+    border: 1px solid black;
+    background-color: white;
+    height: 40px;
+  }
+
+
+
+  
+  
+  
+  
+  .right-sidebar {
+    width: 88px; /* Adjust width as needed */
+    
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 20px 10px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    margin-top: 78px;
+    align-items: center;
+    margin-right: 10px;
+    background-color: white;
+  }
+  
+  .sidebar-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+    color: rgb(22, 21, 21);
+    flex-direction: column;
+    border: none;
+    color: inherit;
+    transition: color 0.3s;
+  }
+  
+  
+  .sidebar-button mat-icon{
+    margin-bottom: 5px;
+  }
+  .sidebar-button.active{
+    background-color: #333;
+    color: white;
+  }
+  
+  
+  .b{
+    font-size: 15px;
+  }
+  .active{
+    color: #333;
+  }
+  
+ 

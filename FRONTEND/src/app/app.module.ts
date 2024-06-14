@@ -40,6 +40,11 @@ import {MatTableModule} from '@angular/material/table';
 import { PopupComponent } from './components/popup/popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TestOrchestratorComponent } from './components/test-orchestrator/test-orchestrator.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { TrendsComponent } from './components/trends/trends.component';
 
 
 
@@ -60,6 +65,12 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     PactDataComponent,
     PopupComponent,
     PieChartComponent,
+    SidebarComponent,
+    NavbarComponent,
+    TestOrchestratorComponent,
+    SidenavComponent,
+    TrendsComponent,
+    
     
     
   ],

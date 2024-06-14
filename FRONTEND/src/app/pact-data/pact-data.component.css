@@ -26,20 +26,23 @@
     width: 100%;
   }
   mat-toolbar {
-    background: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
+    background: #2F3E46;
     color: white;
     width: 100%;
   }
   
+  
   mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    border-right: none;
-    background: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
+  margin: 16px;
+  width: 80px;
+  border-right: none;
+  background: #2F3E46;
+  color: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 2px 0 5px rgba(0,0,0,0);
+  
   }
   .hom{
     color: white;
@@ -66,7 +69,7 @@
     margin-left: 32px;
     padding: 16px;
     overflow: auto;
-   background-color: #dae8fc;
+   background-color: white;
    overflow: hidden;
   }
   
@@ -153,6 +156,7 @@
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style:none;
+    height: 100%;
   }
   .sidenav::-webkit-scrollbar{
     display: none;
@@ -210,6 +214,20 @@
   .heav{
     color: white;
   }
+  .proicon{
+    font-size: 38px;
+    color: white;
+  }
+  .cc{
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 30px;
+  
+  }
+  
  
   
   

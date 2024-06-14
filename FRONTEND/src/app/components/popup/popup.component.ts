@@ -1,4 +1,4 @@
-import { Component , Output} from '@angular/core';
+import { Component , Output, EventEmitter} from '@angular/core';
 import { Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -7,7 +7,7 @@ import { TestResultsService } from './test-results.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import EventEmitter from 'events';
+
 
 
 
@@ -17,6 +17,7 @@ import EventEmitter from 'events';
   styleUrl: './popup.component.css'
 })
 export class PopupComponent implements OnInit {
+  @Output() runTest = new EventEmitter<{ url: string, spec: string, env: string }>();
   
   url: string = '';
   spec: string = '';
@@ -78,7 +79,12 @@ export class PopupComponent implements OnInit {
         this.spinner.hide();
       } 
   });
+  this.runTest.emit({ url: this.url, spec: this.spec, env: this.env });
+  setTimeout(()=>{
+    this.dialogRef.close();
+  }, 5000);
 }
+
 onAdd():void {
   const data={
     url:this.url,
@@ -88,6 +94,14 @@ onAdd():void {
     lastActivity: new Date().toISOString()
   };
  
+  this.dialogRef.close();
+}
+cancel(): void {
+  this.dialogRef.close();
+}
+
+back(): void {
+  
   this.dialogRef.close();
 }
  

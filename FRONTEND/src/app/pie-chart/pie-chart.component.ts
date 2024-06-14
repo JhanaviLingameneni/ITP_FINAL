@@ -78,7 +78,7 @@ export class PieChartComponent implements OnInit {
 
   createPieChart(dataPoints: any[]) {
     this.pieChart = new Chart('MyPieChart', {
-      type: 'pie',
+      type: 'doughnut',
       data: {
         labels: dataPoints.map(point => point.name),
         datasets: [{
@@ -90,6 +90,7 @@ export class PieChartComponent implements OnInit {
       },
       options: {
         aspectRatio: 2.5,
+        cutout:'70%',
         layout: {
           padding: {
             top: 20,
