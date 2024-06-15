@@ -1,174 +1,258 @@
-mat-toolbar {
-    background: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
+
+  
+
+
+  .sidebar {
+    width: 100px; /* Adjust this value to match the desired width */
+    height: 100%; /* Ensure it covers the full viewport height */
+    background-color: #333;
     color: white;
-    width: 100%;
-  }
-  mat-sidenav {
-    margin: 16px;
-    width: 200px;
-    border-right: none;
-    background: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
-    color: white;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-  }
-  .hom{
-    color: white;
-    height: 24px;
-    flex-shrink: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .to{
-    color: white;
-    height: 24px;
-    flex-shrink: 0;
-  }
-  .mst{
-    color: white;
-    height: 24px;
-    flex-shrink: 0;
-  }
-  .content {
-    height: 85vh;
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
-    padding: 16px;
-    overflow: auto;
-   background-color: #dae8fc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
    
+    align-items: center;
   }
   
-  mat-sidenav-container {
-    height: calc(100vh - 65px);
-  }
-  .menu-button .ms{
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-  }
-  .menu-button .mat-icon, .menu-button .material-icons{
-    margin-right: 8px;
-  }
-  .menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 1rem;
-    color: white;
+  .sidebar-header {
+    padding: 1rem;
+    background-color: #444;
+    text-align: center; /* Center the title */
     margin-bottom: 30px;
-    margin-top: 30px;
-  }
-  .menu-button span{
-    flex: 1;
-    display: flex;
-    align-items: center;
-  }
-  .menu-button i{
-    margin-right: 4px;
-    height: 24px;
-  }
-  .mat-icon {
-      margin-right: 8px;
-    } 
-  .avatar {
-    margin-top: 16px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  .name {
-    margin-top: 8px;
-    font-weight: normal;
   }
   
-  .designation {
-    margin-top: 2px;
-    font-size: 0.7rem;
-    color: lightgrey;
-  }
-  mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-  .elm{
-    color: white;
-  }
-  .teO{
-    color: white;
-  }
-  .ms{
-    color: white;
-  }
-  .menu-button .button-content{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .sidenav-container{
-    overflow-y: hidden;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style:none;
-  }
-  .sidenav::-webkit-scrollbar{
-    display: none;
-  }
-  .mat-sidenav-container, .mat-drawer-container, .mat-sidenav-content, .sidenav{
-    overflow: hidden !important;
-  }
-  
-  .menu-button.sub-category {
-    font-size: 14px; /* Smaller font for sub-categories */
-    padding-left: 20px; /* Indent sub-category items */
-    background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));/* Example blue color */
-    color: white;
-  }
-  .main-category{
-    background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
-    color: white;
-  }
-  .sub-item{
-    color: black;
-    border: none;
-    text-align: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    float:right;
-    margin-right: 10px;
-    box-shadow: none;
-  }
-  .mat-menu-content .mat-menu-item {
-    background-color: rgb(57, 142, 211); /* Match the navbar color */
-    color: white; /* Ensuring the text color is visible */
-  }
-  .sub{
-    background-color: linear-gradient(rgb(47, 0, 128),rgb(92, 199, 232));
-  }
-  .but{
-    margin-top: 20px;
-    justify-content: center;
-    display: flex;
-  }
-  :host ::ng-deep .p-button{
-    color: white;
-    justify-content: right;
-    display: flex;
-    background-color: transparent;
-    cursor: pointer;
-    border: none !important;
-  }
-  .right-align{
-    margin-left: auto;
-  }
-  .hell{
+  .cc {
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 16px;
+    display: block;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 28px; /* Adjust font size if necessary */
+    margin: 0 auto;
+    height: 46px;
+    width: 46px;
+  }
+  .st{
+    font-size: 13px;
   }
   
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #575757;
+  }
+  
+  .sidebar-item mat-icon {
+    margin-right: 10px;
+    font-size: 20px; /* Adjust icon size if necessary */
+  }
+
+
+  /* Navbar styles */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 85px;
+  }
+  .toolbar{
+    background-color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .user-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-button {
+    color: rgb(15, 15, 15);
+  }
+  
+  .user-button mat-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .user-button .dropdown-icon {
+    margin-left: 0.5rem;
+  }
+  
+  .user-button:hover {
+    color: #0a0a0a;
+  }
+  .toolbar{
+    margin-top: 0;
+  }
+
+
+
+
+  .example-card {
+    margin: 20px;
+    padding: 20px;
+    max-width: 80%;
+    box-shadow: 0 8px 16px -2px rgba(0,0,0,0.2);
+    background-color: white;
+    margin-left: 110px;
+    
+  }
+  
+  .table-container {
+    padding: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    box-shadow: 0 8px 16px -4px rgba(0,0,0,0.2);
+  }
+  .pb{
+    background-color: rgb(71, 71, 204);
+    color: white;
+    margin-left: 660px;
+    font-size: 20px;
+  }
+  
+  
+  .mat-toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .filter-field {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .mat-card-title{
+    text-align: center;
+    align-items: center;
+  }
+  .sto{
+    border: 1px solid black;
+    background-color: white;
+    height: 40px;
+  }
+
+
+
+  
+  
+  
+  
+  .right-sidebar {
+    width: 88px; /* Adjust width as needed */
+    
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 20px 10px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    margin-top: 78px;
+    align-items: center;
+    margin-right: 10px;
+    background-color: white;
+  }
+  
+  .sidebar-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;
+    color: rgb(22, 21, 21);
+    flex-direction: column;
+    border: none;
+    color: inherit;
+    transition: color 0.3s;
+  }
+  
+  
+  .sidebar-button mat-icon{
+    margin-bottom: 5px;
+  }
+  .sidebar-button.active{
+    background-color: #333;
+    color: white;
+  }
+  
+  
+  .b{
+    font-size: 15px;
+  }
+  .active{
+    color: #333;
+  }
+
+
+  .result-table {
+    margin-top: 20px;
+  }
+  
+  .result-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .result-table th, .result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .result-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  .tablee{
+    width: 50%;
+  }
+  .table1{
+    width:50px;
+  }
+  .pactss{
+    color:#0a0a0a;
+    font-family: Regular 400;
+  }
+  .result-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .table1 {
+    width: 100%;
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: center;
+  }
+
+  
+ 
   

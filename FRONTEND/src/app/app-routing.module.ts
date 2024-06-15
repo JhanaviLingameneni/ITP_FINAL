@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TrendsComponent } from './components/trends/trends.component';
+import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
 
 
 const routes: Routes = [
@@ -91,6 +92,10 @@ const routes: Routes = [
   {
     path:'trends',
     component:TrendsComponent
+  },
+  {
+    path:'si',
+    component:ServiceInteractionsComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'

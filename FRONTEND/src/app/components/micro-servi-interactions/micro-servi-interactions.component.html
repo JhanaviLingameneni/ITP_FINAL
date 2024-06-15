@@ -1,72 +1,23 @@
 <router-outlet></router-outlet>
-<mat-toolbar class="mat-elevation-z8">
-  <h2 class="cc">Lenovo</h2>
-  <div class="right-align">
-    <button mat-button [matMenuTriggerFor]="profileMenu">
-      <mat-icon class="proicon">account_circle</mat-icon>
-    </button>
-    <mat-menu #profileMenu="matMenu">
-    <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button> </mat-menu></div>
-    
-</mat-toolbar>
-
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
-   
-
-    <mat-divider></mat-divider>
-
-    <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
-      <mat-icon class="to">slideshow</mat-icon>
-      <span class="teO">Test Orchestrator</span>
-    </a>
-    <a mat-button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
-      <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
-      <span  class="ms">Contract Testing 
-      </span></div>
-    </a>
-    
-   
-    <mat-menu #menu="matMenu" class="sub" >
-      <button mat-menu-item routerLink="/micro-servi-interactions" class="mat-menu-item">Micro-Service-Interactions</button>
-      <button mat-menu-item routerLink="/pacts" class="mat-menu-item" >Pacts</button>
-    </mat-menu>
-    
-    
-
-    <mat-divider></mat-divider>
-
-   
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="content ">
-      <router-outlet>
-        <div *ngFor="let row of rows" class ="row">
-            <div *ngFor="let service of row ; let last=last" [class] ="last ? 'col4 col2 last' : 'col4 col2'">
-     
-        <div class="card">
-          <div class="card-body">
-            <p-button type="button"  class="card-button"[disabled]="disabledServices[service.name]"
-              (click)="onServiceClick(service.name)">{{service.name}}</p-button>
-            
-            
-            <!-- Add more details as needed -->
-          </div>
+  <div class="whole">
+    <div class="button-container">
+      <div class="button-row" *ngFor="let row of buttonRows">
+        <div class="button-card" *ngFor="let button of row">
+          <button
+            class="service-button"
+            [class.disabled]="disabledServices[button.name]"
+            (click)="onServiceClick(button.name)"
+          >
+            {{ button.name }}
+          </button>
         </div>
-       
       </div>
     </div>
     <div class="interaction-display">
       <label for="consumer">Consumer:</label>
-      <input id="consumer" type="text" [(ngModel)]="consumer" readonly>
-  
+      <input id="consumer" type="text" [(ngModel)]="consumer" readonly />
       <label for="producer">Producer:</label>
-      <input id="producer" type="text" [(ngModel)]="producer" readonly>
-      <button type="button" class="execute-button" (click)="execute()" (click)="executeInteraction() ">Execute</button>
+      <input id="producer" type="text" [(ngModel)]="producer" readonly />
+      <button type="button" class="execute-button" (click)="execute()" routerLink="/pacts">Execute</button>
     </div>
-   
-  
-</router-outlet>
-</div>
-</mat-sidenav-content>
-</mat-sidenav-container>
+  </div>

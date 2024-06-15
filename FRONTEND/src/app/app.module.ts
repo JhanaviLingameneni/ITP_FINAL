@@ -45,6 +45,7 @@ import { TestOrchestratorComponent } from './components/test-orchestrator/test-o
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TrendsComponent } from './components/trends/trends.component';
+import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
 
 
 
@@ -70,6 +71,7 @@ import { TrendsComponent } from './components/trends/trends.component';
     TestOrchestratorComponent,
     SidenavComponent,
     TrendsComponent,
+    ServiceInteractionsComponent,
     
     
     

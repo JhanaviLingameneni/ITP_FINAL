@@ -1,89 +1,80 @@
-<mat-toolbar class="mat-elevation-z8">
-  
-  
-    <h3>ITP Dashboard</h3>
-    <div class="right-align">
-      <p-button mat-button label="Sign out" class="but" (onClick)="logOut()"></p-button></div>
-  </mat-toolbar>
-  
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav="matSidenav" mode="side" opened="true"  class="sidenav">
-     
-  
-      <mat-divider></mat-divider>
-  
-      <a mat-button mat-button class="menu-button" routerLink="/evaluation-metrics">
-        <mat-icon class="hom">home</mat-icon>
-        <span class="elm">Evaluation Metrics</span>
-      </a>
-      <a mat-button mat-button class="menu-button" routerLink="/tech-orchestrator">
-        <mat-icon class="to">slideshow</mat-icon>
-        <span class="teO">Test Orchestrator</span>
-      </a>
+<mat-toolbar class="toolbar" >
+  <span class="navbar-brand">Intelligent TestOps Platform </span>
+  <span class="spacer"></span>
+  <div class="user-section">
+    <button mat-button [matMenuTriggerFor]="menu" class="user-button">
+      <mat-icon>person</mat-icon>
+      <span>User</span>
       
-      <a>
-      <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation" class="menu-button" >
-        <div class="button-content"><mat-icon class="mst">file_copy</mat-icon>
-        <span  class="ms">Micro Service Interactions 
-          
-        </span></div>
-      </button></a>
-      <mat-menu #menu="matMenu" class="sub" >
-        <button mat-menu-item routerLink="/micro-servi-interactions" class="mat-menu-item">Micro-Service-Interactions</button>
-        <button mat-menu-item routerLink="/pacts" class="mat-menu-item" >Pacts</button>
-      </mat-menu>
-      <mat-divider></mat-divider>
-  
-     
-    </mat-sidenav>
-    <mat-sidenav-content>
-      
-      <div class="content mat-elevation-z8">
-        <router-outlet>
-            <div>
-              <div class="pacts-container">
-                <h1 class="turn">Pacts</h1>
-                
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                  <ng-container matColumnDef="consumer">
-                    <th mat-header-cell *matHeaderCellDef class="hell">Consumer</th>
-                    <td mat-cell *matCellDef="let element">{{element.consumer}}</td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="provider">
-                    <th mat-header-cell *matHeaderCellDef class="hell">Provider</th>
-                    <td mat-cell *matCellDef="let element">{{element.provider}}</td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="pactFile">
-                    <th mat-header-cell *matHeaderCellDef class="hell">Pact File</th>
-                    <td mat-cell *matCellDef="let element">
-                    <a routerLink="/pacts" target="_blank">{{element.pactFile}}</a>
-                    </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef class="hell">Status</th>
-                    <td mat-cell *matCellDef="let element">{{element.status}}</td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="runDuration">
-                    <th mat-header-cell *matHeaderCellDef class="hell">Run Duration</th>
-                    <td mat-cell *matCellDef="let element">{{element.runDuration}}</td>
-                  </ng-container>
-              
-                  <!-- Other columns here -->
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-                
-              </div>
-                <pre>{{ jsonData | json }}</pre>
-              </div>
-              
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <span class="cc">L</span>
+  </div>
+  <div class="sidebar-menu">
+    <a class="sidebar-item" routerLink="/home">
+      <mat-icon>group_work</mat-icon>
+      <span class="st">Test Orchestrator</span>
+    </a>
+    <a class="sidebar-item" routerLink="/si">
+      <mat-icon>build</mat-icon>
+      <span class="st">Service Interactions</span>
+    </a>
+    <mat-divider></mat-divider>
+  </div>
+</div>
+    
+    
+        
             
-        </router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<div class="result-table">
+  <mat-card>
+    <mat-table [dataSource]="dataSource" class="table1">
+      <!-- Consumer Column -->
+      <ng-container matColumnDef="consumer">
+        <mat-header-cell *matHeaderCellDef> Consumer </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.consumer}} </mat-cell>
+      </ng-container>
+
+      <!-- Provider Column -->
+      <ng-container matColumnDef="producer">
+        <mat-header-cell *matHeaderCellDef> Provider </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.producer}} </mat-cell>
+      </ng-container>
+
+      <!-- Pact File Column -->
+      <ng-container matColumnDef="pactFile">
+        <mat-header-cell *matHeaderCellDef> Pact File </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.pactFile}} </mat-cell>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+      </ng-container>
+
+      <!-- Last Activity Column -->
+      <ng-container matColumnDef="lastActivity">
+        <mat-header-cell *matHeaderCellDef> Last Activity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastActivity}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card>
+</div>
+    
+ 
