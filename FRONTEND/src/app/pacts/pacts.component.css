@@ -1,7 +1,4 @@
 
-  
-
-
   .sidebar {
     width: 100px; /* Adjust this value to match the desired width */
     height: 100%; /* Ensure it covers the full viewport height */
@@ -74,6 +71,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 85px;
+    font-family: Regular 400;
   }
   .toolbar{
     background-color: white;
@@ -207,50 +205,30 @@
   }
 
 
-  .result-table {
-    margin-top: 20px;
-  }
   
-  .result-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
   
-  .result-table th, .result-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+  .mat-header-cell{
+    font-weight: bold;
   }
-  
-  .result-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-  }
-  .tablee{
-    width: 50%;
-  }
-  .table1{
-    width:50px;
-  }
-  .pactss{
-    color:#0a0a0a;
-    font-family: Regular 400;
-  }
-  .result-table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .table1 {
-    width: 100%;
-    max-width: 800px; /* Adjust the max-width as needed */
-    margin: 0 auto;
-    border-collapse: collapse;
-  }
-  
   .mat-header-cell, .mat-cell {
     text-align: center;
+  }
+  .table1 {
+    width: 80%;
+    margin-top: 20px;
+  }
+  .result-table{
+    max-width: 85%;
+    margin-left: 140px;
+    align-items: center;
+  }
+  
+  .status-active {
+    color: green;
+  }
+  
+  .status-failed {
+    color: red;
   }
 
   

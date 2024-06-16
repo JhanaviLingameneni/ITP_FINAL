@@ -34,13 +34,11 @@
     <mat-divider></mat-divider>
   </div>
 </div>
-    
-    
-        
-            
 <div class="result-table">
+  <h2>Pacts</h2>
   <mat-card>
-    <mat-table [dataSource]="dataSource" class="table1">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
       <!-- Consumer Column -->
       <ng-container matColumnDef="consumer">
         <mat-header-cell *matHeaderCellDef> Consumer </mat-header-cell>
@@ -48,9 +46,9 @@
       </ng-container>
 
       <!-- Provider Column -->
-      <ng-container matColumnDef="producer">
+      <ng-container matColumnDef="provider">
         <mat-header-cell *matHeaderCellDef> Provider </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.producer}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.provider}} </mat-cell>
       </ng-container>
 
       <!-- Pact File Column -->
@@ -62,7 +60,7 @@
       <!-- Status Column -->
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="{'status-active': element.status === 'Active', 'status-failed': element.status === 'Failed'}"> {{element.status}} </mat-cell>
       </ng-container>
 
       <!-- Last Activity Column -->
@@ -76,5 +74,10 @@
     </mat-table>
   </mat-card>
 </div>
+    
+    
+        
+            
+
     
  
