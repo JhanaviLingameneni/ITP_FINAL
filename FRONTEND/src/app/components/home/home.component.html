@@ -1,125 +1,123 @@
 <div class="content-wrapper">
-<mat-toolbar class="toolbar" >
-  <span class="navbar-brand">Intelligent TestOps Platform </span>
-  <span class="spacer"></span>
-  <div class="user-section">
-    <button mat-button [matMenuTriggerFor]="menu" class="user-button">
-      <mat-icon>person</mat-icon>
-      <span>User</span>
-      
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logOut()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Sign Out</span>
+  <mat-toolbar class="toolbar" >
+    <span class="navbar-brand">Intelligent TestOps Platform </span>
+    <span class="spacer"></span>
+    <div class="user-section">
+      <button mat-button [matMenuTriggerFor]="menu" class="user-button">
+        <mat-icon>person</mat-icon>
+        <span>User</span>
+        
       </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  
+  
+  
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="cc">L</span>
+    </div>
+    <div class="sidebar-menu">
+      <a class="sidebar-item" routerLink="/home">
+        <mat-icon>group_work</mat-icon>
+        <span class="st">Test Orchestrator</span>
+      </a>
+      <a class="sidebar-item" routerLink="/si">
+        <mat-icon>build</mat-icon>
+        <span class="st">Service Interactions</span>
+      </a>
+      <mat-divider></mat-divider>
+    </div>
   </div>
-</mat-toolbar>
-
-
-
-<div class="sidebar">
-  <div class="sidebar-header">
-    <span class="cc">L</span>
+  
+  <div class="main-content">
+    <mat-card class="example-card" id="overview">
+      <mat-card-header>
+        <mat-card-title class="mat-card-title">XClarity One Test</mat-card-title>
+        <button class="pb" mat-icon-button (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="table-container">
+          <mat-toolbar class="sto">
+            <span class="toolbar-spacer"></span>
+            <button mat-icon-button (click)="refresh()">
+              <mat-icon>refresh</mat-icon>
+            </button>
+          </mat-toolbar>
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+             <!-- Checkbox Column -->
+             <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+               <!-- URL -->
+        <ng-container matColumnDef="url">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> URL </th>
+          <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        </ng-container>
+    
+        <!-- SPEC -->
+        <ng-container matColumnDef="spec">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SPEC </th>
+          <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
+        </ng-container>
+    
+        <!-- ENV -->
+        <ng-container matColumnDef="env">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ENV </th>
+          <td mat-cell *matCellDef="let element"> {{element.env}} </td>
+        </ng-container>
+    
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+    
+        <!-- lastActivity -->
+        <ng-container matColumnDef="lastActivity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Activity </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastActivity}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+    </mat-card-content>
+    </mat-card>
+    <!-- Right sidebar -->
+    <div class="right-sidebar">
+      <a class="sidebar-button" routerLink="/home" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span class="b">Overview</span>
+      </a>
+      <a class="sidebar-button" routerLink="/trends" routerLinkActive="active" >
+        <mat-icon>insights</mat-icon>
+        <span class="b">Trends</span>
+      </a>
+    </div>
   </div>
-  <div class="sidebar-menu">
-    <a class="sidebar-item" routerLink="/home">
-      <mat-icon>group_work</mat-icon>
-      <span class="st">Test Orchestrator</span>
-    </a>
-    <a class="sidebar-item" routerLink="/si">
-      <mat-icon>build</mat-icon>
-      <span class="st">Service Interactions</span>
-    </a>
-    <mat-divider></mat-divider>
   </div>
-</div>
-
-<div class="main-content">
-  <mat-card class="example-card" id="overview">
-    <mat-card-header>
-      <mat-card-title class="mat-card-title">XClarity One Test</mat-card-title>
-      <button class="pb" mat-icon-button (click)="openDialog()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="table-container">
-        <mat-toolbar class="sto">
-          <span class="toolbar-spacer"></span>
-          <button mat-icon-button (click)="refresh()">
-            <mat-icon>refresh</mat-icon>
-          </button>
-        </mat-toolbar>
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-           <!-- Checkbox Column -->
-           <ng-container matColumnDef="select">
-            <th mat-header-cell *matHeaderCellDef>
-              <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-              </mat-checkbox>
-            </th>
-            <td mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
-              </mat-checkbox>
-            </td>
-          </ng-container>
-             <!-- URL -->
-      <ng-container matColumnDef="url">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> URL </th>
-        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
-      </ng-container>
-  
-      <!-- SPEC -->
-      <ng-container matColumnDef="spec">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> SPEC </th>
-        <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
-      </ng-container>
-  
-      <!-- ENV -->
-      <ng-container matColumnDef="env">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ENV </th>
-        <td mat-cell *matCellDef="let element"> {{element.env}} </td>
-      </ng-container>
-  
-      <!-- Status -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-      </ng-container>
-  
-      <!-- lastActivity -->
-      <ng-container matColumnDef="lastActivity">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Activity </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastActivity}} </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </div>
-  </mat-card-content>
-  </mat-card>
-  <!-- Right sidebar -->
-  <div class="right-sidebar">
-    <a class="sidebar-button" routerLink="/home" routerLinkActive="active">
-      <mat-icon>dashboard</mat-icon>
-      <span class="b">Overview</span>
-    </a>
-    <a class="sidebar-button" routerLink="/trends" routerLinkActive="active" >
-      <mat-icon>insights</mat-icon>
-      <span class="b">Trends</span>
-    </a>
-  </div>
-</div>
-</div>
-
-
   
   
-
-
+    
+    

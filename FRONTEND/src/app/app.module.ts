@@ -46,6 +46,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TrendsComponent } from './components/trends/trends.component';
 import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
+import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 
 
 
@@ -72,6 +73,7 @@ import { ServiceInteractionsComponent } from './components/service-interactions/
     SidenavComponent,
     TrendsComponent,
     ServiceInteractionsComponent,
+    PactPopUpComponent,
     
     
     

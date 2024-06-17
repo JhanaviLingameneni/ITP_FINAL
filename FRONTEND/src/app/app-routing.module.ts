@@ -17,6 +17,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TrendsComponent } from './components/trends/trends.component';
 import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
+import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 
 
 const routes: Routes = [
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path:'si',
     component:ServiceInteractionsComponent
+  },
+  {
+    path:'ppu',
+    component:PactPopUpComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'

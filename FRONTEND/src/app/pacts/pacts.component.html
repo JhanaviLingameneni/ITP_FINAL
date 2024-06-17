@@ -54,7 +54,7 @@
       <!-- Pact File Column -->
       <ng-container matColumnDef="pactFile">
         <mat-header-cell *matHeaderCellDef> Pact File </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.pactFile}} </mat-cell>
+        <mat-cell *matCellDef="let element"> <mat-icon (click)="openPactFile()">insert_drive_file</mat-icon> </mat-cell>
       </ng-container>
 
       <!-- Status Column -->

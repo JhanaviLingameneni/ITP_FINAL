@@ -4,12 +4,14 @@ import { DataService } from './data.service';
 import { PactData } from '../interfaces/pact';
 import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
+import { PactPopUpComponent } from '../components/pact-pop-up/pact-pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
 interface ExecutionResult {
   consumer: string;
   provider: string;
   pactFile: string;
   status: string;
-  lastActivity: string;
+  lastActivity: any;
 }
 
 @Component({
@@ -32,7 +34,8 @@ export class PactsComponent implements OnInit{
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private dialog:MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -52,14 +55,12 @@ export class PactsComponent implements OnInit{
         console.log('Data received:', data);
         const endTime = new Date();
         const status = 'Active'; // Based on your backend response
-        const lastActivity = this.formatDateTime(endTime);
-
         this.executionResults.push({
           consumer: this.consumer,
           provider: this.provider,
           pactFile: 'pact-data',
           status: status,
-          lastActivity: lastActivity
+          lastActivity: this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')
         });
 
         this.dataSource.data = this.executionResults; // Update the data source
@@ -68,14 +69,14 @@ export class PactsComponent implements OnInit{
         console.error('Error:', error);
         const endTime = new Date();
         const status = 'Failed'; // Based on your backend response
-        const lastActivity = this.formatDateTime(endTime);
+        
 
         this.executionResults.push({
           consumer: this.consumer,
           provider: this.provider,
           pactFile: 'pact-data',
           status: status,
-          lastActivity: lastActivity
+          lastActivity: this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')
         });
 
         this.dataSource.data = this.executionResults; // Update the data source
@@ -83,15 +84,29 @@ export class PactsComponent implements OnInit{
     );
   }
 
-  private formatDateTime(date: Date): string {
-    const dateString = this.datePipe.transform(date, 'yyyy-MM-dd');
-    const timeString = this.datePipe.transform(date, 'HH:mm:ss');
-    return '${dateString} ${timeString}';
-  }
+  
   logOut() :void{
     sessionStorage.clear();
     this.router.navigate(['login']);
   }
+  openPactFile() {
+    if (status === 'Failed') {
+      this.dialog.open(PactPopUpComponent, {
+        data: { status: 'Failed' }
+      });
+    } else {
+      this.dataService.getPactData().subscribe(
+        (data) => {
+          this.dialog.open(PactPopUpComponent, {
+            data: { status: 'Success', pactData: data }
+          });
+        },
+        (error) => {
+          this.dialog.open(PactPopUpComponent, {
+            data: { status: 'Failed' }
+          });
+        }
+      );
+    }
+  }
 }
-
-

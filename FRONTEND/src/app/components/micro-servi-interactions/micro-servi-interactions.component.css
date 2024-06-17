@@ -47,7 +47,7 @@
 }
 
 .interaction-display {
-  margin-top: 20px;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,4 +77,20 @@
 }
 .whole{
   margin-top: 45px;
+}
+.view-results-button{
+  justify-content: center;
+  margin-left: 560px;
+}
+.viewresultbutton{
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+}
+.viewresultbutton:hover{
+  background-color: darkgreen;
 }

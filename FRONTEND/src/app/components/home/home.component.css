@@ -211,4 +211,12 @@ body{
     color: #333;
   }
   
- 
+  .status-active {
+    color: green;
+  }
+  .status-failed {
+    color: red;
+  }
+  .status-inprogress {
+    color: orange;
+  }

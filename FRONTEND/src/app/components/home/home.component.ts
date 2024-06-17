@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit{
     [...this.dataSource.data, newData]; // Trigger table update
     const poller = interval(5000) // Poll every 5 seconds
       .pipe(
-        switchMap(() => this.httpClient.get<any>('http://localhost:5000/api/v1/runCypress')), // Replace 'backend_results_url' with actual URL
+        switchMap(() => this.httpClient.get<any>('http://localhost:5000/api/v1/test-results/latest')), // Replace 'backend_results_url' with actual URL
         takeWhile(response => !this.areResultsComplete(response), true) // Stop polling when results are complete
       )
       .subscribe(response => {

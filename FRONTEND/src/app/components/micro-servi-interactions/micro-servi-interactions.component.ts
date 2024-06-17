@@ -97,7 +97,3 @@ export class MicroServiInteractionsComponent implements OnInit  {
     this.router.navigate(['login']);
   }
 }
-
-
-
-
