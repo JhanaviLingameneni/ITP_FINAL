@@ -6,6 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
 import { PactPopUpComponent } from '../components/pact-pop-up/pact-pop-up.component';
 import { MatDialog } from '@angular/material/dialog';
+import { timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 interface ExecutionResult {
   consumer: string;
   provider: string;
@@ -55,6 +58,9 @@ export class PactsComponent implements OnInit{
         console.log('Data received:', data);
         const endTime = new Date();
         const status = 'Active'; // Based on your backend response
+        setTimeout(()=>{
+
+       
         this.executionResults.push({
           consumer: this.consumer,
           provider: this.provider,
@@ -64,11 +70,13 @@ export class PactsComponent implements OnInit{
         });
 
         this.dataSource.data = this.executionResults; // Update the data source
+      },3000);
       },
       (error) => {
         console.error('Error:', error);
         const endTime = new Date();
         const status = 'Failed'; // Based on your backend response
+        setTimeout(()=>{
         
 
         this.executionResults.push({
@@ -80,6 +88,7 @@ export class PactsComponent implements OnInit{
         });
 
         this.dataSource.data = this.executionResults; // Update the data source
+      },3000);
       }
     );
   }
@@ -90,23 +99,33 @@ export class PactsComponent implements OnInit{
     this.router.navigate(['login']);
   }
   openPactFile() {
-    if (status === 'Failed') {
-      this.dialog.open(PactPopUpComponent, {
-        data: { status: 'Failed' }
-      });
-    } else {
-      this.dataService.getPactData().subscribe(
-        (data) => {
-          this.dialog.open(PactPopUpComponent, {
-            data: { status: 'Success', pactData: data }
-          });
-        },
-        (error) => {
-          this.dialog.open(PactPopUpComponent, {
-            data: { status: 'Failed' }
-          });
-        }
-      );
-    }
+    console.log('Execution started');
+
+        // Use RxJS timer to delay the execution
+        timer(3000) // Adjust the delay as needed (3000 milliseconds = 3 seconds)
+            .pipe(
+                switchMap(() => this.dataService.getPactData())
+            )
+            .subscribe(
+                (data) => {
+                    console.log('Data received:', data);
+
+                    if (data.status === 'success') { // Check the correct property in data
+                        this.dialog.open(PactPopUpComponent, {
+                            data: { status: 'Success', pactData: data }
+                        });
+                    } else {
+                        this.dialog.open(PactPopUpComponent, {
+                            data: { status: 'Failed' }
+                        });
+                    }
+                },
+                (error) => {
+                    console.error('Error:', error);
+                    this.dialog.open(PactPopUpComponent, {
+                        data: { status: 'Failed' }
+                    });
+                }
+            );
   }
 }
