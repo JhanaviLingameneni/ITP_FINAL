@@ -60,7 +60,7 @@ export class PactsComponent implements OnInit{
           provider: this.provider,
           pactFile: 'pact-data',
           status: status,
-          lastActivity: this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')
+          lastActivity: this.datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss')
         });
 
         this.dataSource.data = this.executionResults; // Update the data source
@@ -76,7 +76,7 @@ export class PactsComponent implements OnInit{
           provider: this.provider,
           pactFile: 'pact-data',
           status: status,
-          lastActivity: this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')
+          lastActivity: this.datePipe.transform(new Date(), 'dd-MM-yyyy HH:mm:ss')
         });
 
         this.dataSource.data = this.executionResults; // Update the data source

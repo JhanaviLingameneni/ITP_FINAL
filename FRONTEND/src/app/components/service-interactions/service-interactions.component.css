@@ -205,5 +205,23 @@
     .active{
       color: #333;
     }
+    .coming-soon{
+      background-color: #ffd700;
+      color:#000;
+      padding:5px 10px;
+      border-radius: 5px;
+      font-size: 8px;
+  
+    }
+    .st1{
+      font-size: 13px;
+      filter:blur(1px);
+      opacity:0.5;
+     
+    }
+    .b1{
+      filter:blur(1px);
+      opacity:0.5;
+    }
     
    
