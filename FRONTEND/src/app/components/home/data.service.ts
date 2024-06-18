@@ -16,7 +16,7 @@ export interface ElementData {
 })
 export class DataService {
   private apiUrl = 'http://localhost:5000/api/v1/runCypress'; // Replace with your actual backend URL
-  private getTestResultsUrl='http://localhost:5000/test-results';
+  private getTestResultsUrl='http://localhost:5000/api/v1/test-results/latest';
 
   constructor(private http: HttpClient) {}
 

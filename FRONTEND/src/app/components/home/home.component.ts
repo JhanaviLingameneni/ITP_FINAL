@@ -11,19 +11,17 @@ import { PopupComponent } from '../popup/popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { interval } from 'rxjs';
 import { switchMap,takeWhile } from 'rxjs/operators';
-
-
-
+import { StorageService } from './storage.service';
 export interface ElementData {
   url: string;
   spec: string;
   env: string;
   status: string;
   lastActivity:any;
+  uuid:string;
 }
-const ELEMENT_DATA: ElementData[] = [
+const ELEMENT_DATA='elementData';
   // Sample data
-];
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,13 +29,14 @@ const ELEMENT_DATA: ElementData[] = [
 })
 export class HomeComponent implements OnInit{
   activeSection='overview';
-  displayedColumns: string[] = ['select', 'url', 'spec', 'env', 'status','lastActivity'];
-  dataSource = new MatTableDataSource<ElementData>(ELEMENT_DATA);
+  displayedColumns: string[] = ['select', 'url', 'spec', 'env', 'status','lastActivity','uuid'];
+  dataSource = new MatTableDataSource<ElementData>(this.getElementDataFromStorage());
   selection = new SelectionModel<ElementData>(true, []);
 
   constructor(private router: Router,
     private httpClient: HttpClient,
     public dialog: MatDialog,
+    private storageService: StorageService
   ) { }
 
   sidebarOpen = false;
@@ -54,45 +53,47 @@ export class HomeComponent implements OnInit{
       width:'600px'
     });
 
-    dialogRef.componentInstance.runTest.subscribe((data: { url: string, spec: string, env: string }) => {
-      this.addDataToTable(data.url, data.spec, data.env);
+    dialogRef.componentInstance.runTest.subscribe((data: { url: string, spec: string, env: string,uuid:string }) => {
+      this.addDataToTable(data.url, data.spec, data.env, data.uuid);
       setTimeout(()=>{
         dialogRef.close();
       }, 5000);
     });
   }
-  addDataToTable(url: string, spec: string, env: string) {
+  addDataToTable(url: string, spec: string, env: string, uuid:string) {
     const newData: ElementData = {
       url: url,
       spec: spec,
       env: env,
       status: 'In progress',
-      lastActivity: new Date().toLocaleDateString()
+      lastActivity: new Date().toLocaleDateString(),
+      uuid:uuid
     };
-    this.dataSource.data=
-    [...this.dataSource.data, newData]; // Trigger table update
-    const poller = interval(5000) // Poll every 5 seconds
-      .pipe(
-        switchMap(() => this.httpClient.get<any>('http://localhost:5000/api/v1/test-results/latest')), // Replace 'backend_results_url' with actual URL
-        takeWhile(response => !this.areResultsComplete(response), true) // Stop polling when results are complete
-      )
-      .subscribe(response => {
-        if (this.areResultsComplete(response)) {
-          // Update the status to 'Active'
-          newData.status = 'Active';
-          this.dataSource.data = [...this.dataSource.data]; // Trigger table update
-          poller.unsubscribe(); // Stop polling
-        }
-      });
-  }
+    console.log('New data:',newData);
+    this.dataSource.data.push(newData);
+    this.dataSource.data = [...this.dataSource.data]; // Refresh the table
+    this.saveElementDataToStorage(this.dataSource.data);
 
-  areResultsComplete(response: any): boolean {
-    // Add logic to determine if the test results indicate completion
-    // For example, check if the response contains results of all test cases
-    return response.totalTestCases === response.passedTestCases + response.failedTestCases;
+    const poller = interval(5000).pipe(
+      switchMap(() => this.httpClient.get<any>('http://localhost:5000/api/v1/test-results/latest')),
+      takeWhile(response => this.areResultsComplete(response), true)
+    ).subscribe(response => {
+      console.log('Full API Response:', response); // Log the full response to inspect its structure
+      const result = response.result; // Adjust this line based on actual response structure
+      if (result && result.uuid) {
+        this.addDataToTable(result.url, result.spec, result.env, result.uuid);
+      } else {
+        console.error('UUID not found in the response'); // Debug: UUID missing
+      }
+    });
   }
   
 
+  
+  areResultsComplete(response: any): boolean {
+    console.log('Checking if results are complete:', response);
+    return response.TotalTests === response.TotalPassed + response.TotalFailed;
+  }
   toggleDrawer() {
     this.drawer.toggle();
   }
@@ -107,6 +108,14 @@ export class HomeComponent implements OnInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  saveElementDataToStorage(data: ElementData[]) {
+    this.storageService.setItem(ELEMENT_DATA, data);
+  }
+
+  // Get data from localStorage
+  getElementDataFromStorage(): ElementData[] {
+    return this.storageService.getItem(ELEMENT_DATA) || [];
   }
 
   isAllSelected() {
