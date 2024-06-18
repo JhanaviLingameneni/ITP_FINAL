@@ -49,6 +49,7 @@ import { ServiceInteractionsComponent } from './components/service-interactions/
 import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 
 import { NgChartsConfiguration } from 'ng2-charts';
+import { PiebarComponent } from './components/piebar/piebar.component';
 
 
 
@@ -78,6 +79,7 @@ import { NgChartsConfiguration } from 'ng2-charts';
     TrendsComponent,
     ServiceInteractionsComponent,
     PactPopUpComponent,
+    PiebarComponent,
     
     
     

@@ -18,6 +18,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TrendsComponent } from './components/trends/trends.component';
 import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
 import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
+import { PiebarComponent } from './components/piebar/piebar.component';
 
 
 
@@ -102,6 +103,10 @@ const routes: Routes = [
   {
     path:'ppu',
     component:PactPopUpComponent
+  },
+  {
+    path:'piebar',
+    component:PiebarComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
