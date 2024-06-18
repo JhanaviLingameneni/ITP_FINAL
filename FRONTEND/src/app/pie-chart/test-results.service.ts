@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class TestResultsService {
   private testResultsUrl = 'http://localhost:5000/api/v1/runCypress'; // Use your actual backend URL
-  private getTestResultsUrl='http://localhost:5000/api/v1/test-results/latest';
+  private getTestResultsUrl='http://localhost:5000/test-results';
 
   constructor(private http: HttpClient) {}
 

@@ -129,7 +129,7 @@ loadExecutionResults(): void {
                         });
                     } else {
                         this.dialog.open(PactPopUpComponent, {
-                            data: { status: 'Failed' }
+                            data: { status: 'Failed',pactData:data }
                         });
                     }
                 },

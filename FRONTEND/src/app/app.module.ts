@@ -48,6 +48,10 @@ import { TrendsComponent } from './components/trends/trends.component';
 import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
 import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 
+import { NgChartsConfiguration } from 'ng2-charts';
+
+
+
 
 
 
@@ -74,6 +78,7 @@ import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.compone
     TrendsComponent,
     ServiceInteractionsComponent,
     PactPopUpComponent,
+    
     
     
     
