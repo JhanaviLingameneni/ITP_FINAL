@@ -46,6 +46,7 @@ export class PactsComponent implements OnInit{
       this.consumer = params['consumer'];
       this.provider = params['producer'];
       this.execute();
+      this.loadExecutionResults();
     });
   }
 
@@ -71,6 +72,7 @@ export class PactsComponent implements OnInit{
 
         this.dataSource.data = this.executionResults; // Update the data source
       },3000);
+      this.saveExecutionResults();
       },
       (error) => {
         console.error('Error:', error);
@@ -92,6 +94,17 @@ export class PactsComponent implements OnInit{
       }
     );
   }
+  saveExecutionResults(): void {
+    localStorage.setItem('executionResults', JSON.stringify(this.executionResults));
+}
+
+loadExecutionResults(): void {
+    const savedResults = localStorage.getItem('executionResults');
+    if (savedResults) {
+        this.executionResults = JSON.parse(savedResults);
+        this.dataSource.data = this.executionResults;
+    }
+}
 
   
   logOut() :void{

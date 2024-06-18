@@ -18,7 +18,7 @@ export interface ElementData {
   env: string;
   status: string;
   lastActivity:any;
-  uuid:string;
+  
 }
 const ELEMENT_DATA='elementData';
   // Sample data
@@ -29,9 +29,10 @@ const ELEMENT_DATA='elementData';
 })
 export class HomeComponent implements OnInit{
   activeSection='overview';
-  displayedColumns: string[] = ['select', 'url', 'spec', 'env', 'status','lastActivity','uuid'];
+  displayedColumns: string[] = ['select', 'url', 'spec', 'env', 'status','lastActivity',];
   dataSource = new MatTableDataSource<ElementData>(this.getElementDataFromStorage());
   selection = new SelectionModel<ElementData>(true, []);
+  
 
   constructor(private router: Router,
     private httpClient: HttpClient,
@@ -47,6 +48,7 @@ export class HomeComponent implements OnInit{
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.exportDataAsJSON();
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
@@ -67,7 +69,7 @@ export class HomeComponent implements OnInit{
       env: env,
       status: 'In progress',
       lastActivity: new Date().toLocaleDateString(),
-      uuid:uuid
+      
     };
     console.log('New data:',newData);
     this.dataSource.data.push(newData);
@@ -86,6 +88,8 @@ export class HomeComponent implements OnInit{
         console.error('UUID not found in the response'); // Debug: UUID missing
       }
     });
+    this.setStatusTimer(newData);
+    this.exportDataAsJSON();
   }
   
 
@@ -133,6 +137,25 @@ export class HomeComponent implements OnInit{
   refresh() {
     this.dataSource.filter='';
   }
+  exportDataAsJSON() {
+    const data = this.getElementDataFromStorage();
+    const jsonData = JSON.stringify(data, null, 2);
+    localStorage.setItem('element_data', jsonData);
+  }
+  setStatusTimer(element: ElementData) {
+    setTimeout(() => {
+      element.status = 'Pass';
+      this.updateElementData(element);
+    }, 25000); // Change 10000 to the desired delay in milliseconds
+  }
+  updateElementData(element: ElementData) {
+    const index = this.dataSource.data.findIndex(data => data.url === element.url);
+    if (index !== -1) {
+      this.dataSource.data[index] = element;
+      this.dataSource._updateChangeSubscription(); // Notify the table to update
+    }
+  }
+
 
   addNew() {
     const dialogRef=

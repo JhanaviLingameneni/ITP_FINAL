@@ -166,6 +166,13 @@ body{
     white-space: normal;
     max-width: 150px;
   }
+  .in-progress{
+    color: orange;
+
+  }
+  .active1{
+    color: green;
+  }
 
 
 
