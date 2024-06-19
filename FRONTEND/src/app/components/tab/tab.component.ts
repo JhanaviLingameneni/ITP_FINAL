@@ -11,7 +11,7 @@ import { PopupComponent } from '../popup/popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { interval } from 'rxjs';
 import { switchMap,takeWhile } from 'rxjs/operators';
-import { StorageService } from './storage.service';
+import { StorageService } from '../home/storage.service';
 import {MatTabsModule} from '@angular/material/tabs';
 export interface ElementData {
   url: string;
@@ -23,12 +23,13 @@ export interface ElementData {
 }
 const ELEMENT_DATA='elementData';
   // Sample data
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-tab',
+  templateUrl: './tab.component.html',
+  styleUrl: './tab.component.css'
 })
-export class HomeComponent implements OnInit{
+export class TabComponent  implements OnInit{
   activeSection='overview';
   displayedColumns: string[] = ['select', 'url', 'spec', 'env', 'status','lastActivity',];
   dataSource = new MatTableDataSource<ElementData>(this.getElementDataFromStorage());
@@ -169,6 +170,10 @@ export class HomeComponent implements OnInit{
       
      });
   }
-  
-  
+  selectedTab: string = 'dashboard';
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
+ 
 }

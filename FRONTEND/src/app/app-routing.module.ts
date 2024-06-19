@@ -19,6 +19,7 @@ import { TrendsComponent } from './components/trends/trends.component';
 import { ServiceInteractionsComponent } from './components/service-interactions/service-interactions.component';
 import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 import { PiebarComponent } from './components/piebar/piebar.component';
+import { TabComponent } from './components/tab/tab.component';
 
 
 
@@ -107,6 +108,10 @@ const routes: Routes = [
   {
     path:'piebar',
     component:PiebarComponent
+  },
+  {
+    path:'tab',
+    component:TabComponent
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'

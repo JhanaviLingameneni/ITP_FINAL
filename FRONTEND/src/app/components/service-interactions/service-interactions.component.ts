@@ -14,5 +14,10 @@ export class ServiceInteractionsComponent {
     sessionStorage.clear();
     this.router.navigate(['login']);
   }
+  selectedTab: string = 'dashboard';
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
 
 }

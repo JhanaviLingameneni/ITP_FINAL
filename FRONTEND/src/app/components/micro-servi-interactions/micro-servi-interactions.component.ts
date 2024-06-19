@@ -17,9 +17,21 @@ export class MicroServiInteractionsComponent implements OnInit  {
   consumer: string = '';
   producer: string = '';
   rows: Row[] = [
-    { name: 'User Interface (NGINX)' }, { name: 'Data (Aggregator)' }, { name: 'Groups' }, { name: 'Devices' }, { name: 'Services' },
-    { name: 'Warranty' }, { name: 'SignUp' }, { name: 'Managers' }, { name: 'Knowledge' }, { name: 'Monitoring' },
-    { name: 'Jobs' }, { name: 'Collections' }, { name: 'Certificates Manager' }, { name: 'Communications' }, { name: 'Organizations' },
+    { name: 'User Interface (NGINX)' }, 
+    { name: 'Data (Aggregator)' }, 
+    { name: 'Groups' }, 
+    { name: 'Devices' }, 
+    { name: 'Services' },
+    { name: 'Warranty' }, 
+    { name: 'SignUp' }, 
+    { name: 'Managers' }, 
+    { name: 'Knowledge' },
+     { name: 'Monitoring' },
+    { name: 'Jobs' }, 
+    { name: 'Collections' },
+     { name: 'Certificates Manager' }, 
+     { name: 'Communications' }, 
+     { name: 'Organizations' },
     { name: 'Auth' }
   ];
   buttonRows: Row[][] = [];
