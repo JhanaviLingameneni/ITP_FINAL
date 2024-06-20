@@ -1,10 +1,5 @@
 
 <div class="main-content">
-<div class="tabs">
-    <button class="tab-button" [class.active]="selectedTab === 'dashboard'" (click)="selectTab('dashboard')">Overview</button>
-    <button class="tab-button" [class.active]="selectedTab === 'my-account'" (click)="selectTab('my-account')">Trends</button>
-    
-  </div>
   <mat-toolbar class="toolbar" >
     <span class="navbar-brand">Intelligent TestOps Platform </span>
     <span class="spacer"></span>
@@ -21,6 +16,12 @@
       </mat-menu>
     </div>
   </mat-toolbar>
+<div class="tabs">
+    <button class="tab-button" [class.active]="selectedTab === 'dashboard'" (click)="selectTab('dashboard')">Synopsis</button>
+    <button class="tab-button" [class.active]="selectedTab === 'my-account'" (click)="selectTab('my-account')">Drifts</button>
+    
+  </div>
+  
   
   <div class="tab-content" [ngSwitch]="selectedTab">
     <div *ngSwitchCase="'dashboard'">
@@ -113,11 +114,11 @@
       <span class="cc">L</span>
     </div>
     <div class="sidebar-menu">
-      <a class="sidebar-item" routerLink="/tab">
+      <a class="sidebar-item" routerLink="/tab" routerLinkActive="active">
         <mat-icon>group_work</mat-icon>
         <span class="st">Test Orchestrator</span>
       </a>
-      <a class="sidebar-item" routerLink="/si">
+      <a class="sidebar-item" routerLink="/si" routerLinkActive="active">
         <mat-icon>build</mat-icon>
         <span class="st">Service Interactions</span>
       </a>

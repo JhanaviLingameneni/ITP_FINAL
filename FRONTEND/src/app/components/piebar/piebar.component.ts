@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { color } from 'highcharts';
 
 @Component({
   selector: 'app-piebar',
@@ -20,10 +21,9 @@ export class PiebarComponent {
 		yValueFormatString: "#,###.##'%'",
 		indexLabel: "{name}",
 		dataPoints: [
-		  { y: 10, name: "Passed" },
-		  { y: 1, name: "Failed" },
-		  { y: 0, name: "Pending" },
-		  { y: 1, name: "Skipped" }
+		  { y: 10, name: "Passed", color:'#4CAF50' },
+		  { y: 1, name: "Failed", color:'#F44336' },
+		  { y: 1, name: "Skipped" , color:'#2196F3'}
 		  
 		]
 	  }]
@@ -55,10 +55,9 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 10, label: "Run1"},
-				{  y: 1, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 1, label: "Run4" }
+				{  y: 10, label: "Run1",color:'#4CAF50'},
+				{  y: 1, label: "Run2", color:'#4CAF50' },
+				{  y: 1, label: "Run3", color:'#4CAF50' }
 				
 			]
 		}, {
@@ -68,10 +67,9 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 4, label: "Run1"},
-				{  y: 0, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 36, label: "Run4" }
+				{  y: 4, label: "Run1", color:'#F44336'},
+				{  y: 0, label: "Run2" ,color:'#F44336'},
+				{  y: 36, label: "Run3", color:'#F44336' }
 			]
 		},
 		{
@@ -81,51 +79,12 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 16, label: "Run1"},
-				{  y: 1, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 126, label: "Run4" }
+				{  y: 16, label: "Run1", color:'#2196F3'},
+				{  y: 1, label: "Run2", color:'#2196F3' },
+				{  y: 126, label: "Run3" , color:'#2196F3'}
 			]
 		},
-		{
-			type: "stackedColumn100",
-			
-			
-			indexLabelPlacement: "inside",
-			indexLabelFontColor: "white",
-			dataPoints: [
-				{  y: 15, label: "Run1"},
-				{  y: 1, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 127, label: "Run4" }
-			]
-		},
-		{
-			type: "stackedColumn100",
-			
-			
-			indexLabelPlacement: "inside",
-			indexLabelFontColor: "white",
-			dataPoints: [
-				{  y: 14, label: "Run1"},
-				{  y: 2, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 127, label: "Run4" }
-			]
-		},
-		{
-			type: "stackedColumn100",
-			
-			
-			indexLabelPlacement: "inside",
-			indexLabelFontColor: "white",
-			dataPoints: [
-				{  y: 6, label: "Run1"},
-				{  y: 4, label: "Run2" },
-				{  y: 0, label: "Run3" },
-				{  y: 25, label: "Run4" }
-			]
-		}
+		
 		]
 	}	
 

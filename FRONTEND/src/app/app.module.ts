@@ -51,6 +51,8 @@ import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.compone
 import { NgChartsConfiguration } from 'ng2-charts';
 import { PiebarComponent } from './components/piebar/piebar.component';
 import { TabComponent } from './components/tab/tab.component';
+import { Micro2Component } from './components/micro2/micro2.component';
+import { Pact2Component } from './components/pact2/pact2.component';
 
 
 
@@ -82,6 +84,8 @@ import { TabComponent } from './components/tab/tab.component';
     PactPopUpComponent,
     PiebarComponent,
     TabComponent,
+    Micro2Component,
+    Pact2Component,
     
     
     

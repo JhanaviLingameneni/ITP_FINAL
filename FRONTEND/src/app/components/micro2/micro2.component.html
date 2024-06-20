@@ -1,0 +1,136 @@
+<div class="container">
+    <mat-card class="card1">
+      <div class="row">
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('User Interface(NGINX)')">
+            User Interface(NGINX)
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Data (Aggregator)')">
+            Data (Aggregator)
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Groups')">
+            Groups
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Devices')">
+            Devices
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Services')">
+            Services
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Warranty')">
+            Warranty
+          </button>
+        </div>
+        <div class="box">
+            <button class="button" 
+              [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+              (click)="updateConsumer('SignUp')">
+              SignUp
+            </button>
+          </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="card1">
+      <div class="row">
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Managers')">
+            Managers
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Knowledge')">
+            Knowledge
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Monitoring')">
+            Monitoring
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Jobs')">
+            Jobs
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+            [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+            (click)="updateConsumer('Collections')">
+            Collections
+          </button>
+        </div>
+        <div class="box">
+          <button class="button" 
+          
+            (click)="updateProducer('Communications')">
+            Communications
+          </button>
+        </div>
+        
+          <div class="row">
+            <div class="box">
+                <button class="button" 
+                  (click)="updateProducer('Organizations')">
+                  Organizations
+                </button>
+              </div>
+          <div class="box">
+            <button class="button" 
+              [ngClass]="{'blur': blur && producer !== 'Organizations' && producer !== 'Communications'}" 
+              (click)="updateConsumer('Certificates Manager')">
+              Certificates Manager
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    
+    <mat-card class="card1">
+      <div class="row">
+        <div class="box">
+          <button class="button" (click)="updateConsumer('Auth')">Auth</button>
+        </div>
+      </div>
+    </mat-card>
+    <div class="last">
+      <label for="consumer">Consumer:</label>
+      <input type="text" id="consumer" class="input" [(ngModel)]="consumer">
+      <label for="producer">Producer:</label>
+      <input type="text" id="producer" class="input" [(ngModel)]="producer" (input)="handleProducerInput()">
+      <button class="execute-button" (click)="execute()">Execute</button>
+    </div>
+    <div class="view-results-button">
+      <button type="button" class="viewresultbutton" routerLink="/pacts">View Results</button>
+    </div>
+  </div>

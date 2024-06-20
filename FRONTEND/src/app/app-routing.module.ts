@@ -20,6 +20,8 @@ import { ServiceInteractionsComponent } from './components/service-interactions/
 import { PactPopUpComponent } from './components/pact-pop-up/pact-pop-up.component';
 import { PiebarComponent } from './components/piebar/piebar.component';
 import { TabComponent } from './components/tab/tab.component';
+import { Micro2Component } from './components/micro2/micro2.component';
+import { Pact2Component } from './components/pact2/pact2.component';
 
 
 
@@ -112,6 +114,14 @@ const routes: Routes = [
   {
     path:'tab',
     component:TabComponent
+  },
+  {
+    path:'micro2',
+    component:Micro2Component
+  },
+  {
+    path:'pact2',
+    component:Pact2Component
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
