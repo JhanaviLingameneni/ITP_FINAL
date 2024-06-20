@@ -15,7 +15,7 @@ export class Pact2Component {
   displayedColumns: string[] = ['consumer', 'provider', 'pactFile', 'status', 'lastActivity'];
   dataSource: any[] = [];
 
-  constructor(private pactDataService: PactDataService, public dialog: MatDialog) {}
+  constructor(private pactDataService: PactDataService, public dialog: MatDialog, private router:Router) {}
 
   ngOnInit(): void {
     this.loadPactData();
@@ -77,5 +77,9 @@ export class Pact2Component {
           this.dataSource = [...this.dataSource]; // Trigger change detection
         }
       );
+  }
+  logOut() :void{
+    sessionStorage.clear();
+    this.router.navigate(['login']);
   }
 }

@@ -7,3 +7,144 @@
   .status-progress {
     color: orange;
   }
+
+
+
+
+  .sidebar {
+    width: 100px; /* Adjust this value to match the desired width */
+    height: 100%; /* Ensure it covers the full viewport height */
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+  }
+  
+  .sidebar-header {
+    padding: 1rem;
+    background-color: #444;
+    text-align: center; /* Center the title */
+    margin-bottom: 30px;
+  }
+  
+  .cc {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 28px; /* Adjust font size if necessary */
+    margin: 0 auto;
+    height: 46px;
+    width: 46px;
+  }
+  .st{
+    font-size: 13px;
+  }
+  
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .sidebar-item:hover {
+    background-color: #575757;
+  }
+  
+  .sidebar-item mat-icon {
+    margin-right: 10px;
+    font-size: 20px; /* Adjust icon size if necessary */
+  }
+
+
+  /* Navbar styles */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 85px;
+  }
+  .toolbar{
+    background-color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .user-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-button {
+    color: rgb(15, 15, 15);
+  }
+  
+  .user-button mat-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .user-button .dropdown-icon {
+    margin-left: 0.5rem;
+  }
+  
+  .user-button:hover {
+    color: #0a0a0a;
+  }
+  .toolbar{
+    margin-top: 0;
+  }
+  .mat-elevation-z8{
+    
+    margin-left: 70px;
+  }
+  .container{
+    max-width: 90%;
+    margin-left: 50px;
+  }
+  .hea{
+    margin-left: 50px;
+  }
+  .wrap-content{
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 150px;
+  }
+  .in-progress{
+    color: orange;
+
+  }
+  .active1{
+    color: green;
+  }
+  .coming-soon{
+    background-color: #ffd700;
+    color:#000;
+    padding:5px 10px;
+    border-radius: 5px;
+    font-size: 8px;
+
+  }
+
+

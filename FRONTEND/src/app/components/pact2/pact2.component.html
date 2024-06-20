@@ -1,6 +1,58 @@
+<mat-toolbar class="toolbar" >
+    <span class="navbar-brand">Intelligent TestOps Platform </span>
+    <span class="spacer"></span>
+    <div class="user-section">
+      <button mat-button [matMenuTriggerFor]="menu" class="user-button">
+        <mat-icon>person</mat-icon>
+        <span>User</span>
+        
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Sign Out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="cc">L</span>
+    </div>
+    <div class="sidebar-menu">
+      <a class="sidebar-item" routerLink="/tab" routerLinkActive="active">
+        <mat-icon>group_work</mat-icon>
+        <span class="st">Test Orchestrator</span>
+      </a>
+      <a class="sidebar-item" routerLink="/si" routerLinkActive="active">
+        <mat-icon>build</mat-icon>
+        <span class="st">Service Interactions</span>
+      </a>
+      <a class="sidebar-item" >
+        <mat-icon  class="bl">computer</mat-icon>
+        <span class="st1">Playgrounds</span>
+        <div class="coming-soon">Coming soon</div>
+      </a>
+      <a class="sidebar-item" >
+        <mat-icon class="bl">report_problem</mat-icon>
+        <span class="st1">Anomaly Detection</span>
+        <div class="coming-soon">Coming soon</div>
+      </a>
+      <a class="sidebar-item" >
+        <mat-icon class="bl">fact_check</mat-icon>
+        <span class="st1">Samplings</span>
+        <div class="coming-soon">Coming soon</div>
+      </a>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+
 <div class="container">
     
-    <h2>Contract Testing</h2>
+    <h2 class="hea">Contract Testing</h2>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
       <!-- Consumer Column -->

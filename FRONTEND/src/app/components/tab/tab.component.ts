@@ -69,7 +69,7 @@ export class TabComponent  implements OnInit{
       url: url,
       spec: spec,
       env: env,
-      status: 'In progress',
+      status: 'Pass',
       lastActivity: new Date().toLocaleDateString(),
       
     };
