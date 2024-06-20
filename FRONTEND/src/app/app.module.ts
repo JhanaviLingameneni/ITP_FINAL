@@ -53,7 +53,22 @@ import { PiebarComponent } from './components/piebar/piebar.component';
 import { TabComponent } from './components/tab/tab.component';
 import { Micro2Component } from './components/micro2/micro2.component';
 import { Pact2Component } from './components/pact2/pact2.component';
-
+import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
+const dbConfig: DBConfig = {
+  name: 'PactDB',
+  version: 1,
+  objectStoresMeta: [{
+    store: 'pacts',
+    storeConfig: { keyPath: 'id', autoIncrement: true },
+    storeSchema: [
+      { name: 'consumer', keypath: 'consumer', options: { unique: false } },
+      { name: 'producer', keypath: 'producer', options: { unique: false } },
+      { name: 'pactFile', keypath: 'pactFile', options: { unique: false } },
+      { name: 'status', keypath: 'status', options: { unique: false } },
+      { name: 'lastActivity', keypath: 'lastActivity', options: { unique: false } }
+    ]
+  }]
+};
 
 
 

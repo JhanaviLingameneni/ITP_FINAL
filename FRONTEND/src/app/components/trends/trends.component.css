@@ -189,6 +189,10 @@
     color: inherit;
     transition: color 0.3s;
   }
+  .sidebar-item.active{
+    background-color: white;
+    color: #000;
+  }
   
   
   .sidebar-button mat-icon{

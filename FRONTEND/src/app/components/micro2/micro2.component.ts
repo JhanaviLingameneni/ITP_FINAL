@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PactDataService } from '../pact2/pact-data.service';
 
 @Component({
   selector: 'app-micro2',
@@ -11,7 +12,7 @@ export class Micro2Component {
   producer: string = '';
   blur: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private pactDataService: PactDataService) {}
 
   updateConsumer(buttonName: string) {
     this.consumer = buttonName;
@@ -40,7 +41,16 @@ export class Micro2Component {
   }
 
   execute() {
-    console.log('Navigating with:', { consumer: this.consumer, producer: this.producer });
-    this.router.navigate(['/pact2'], { state: { consumer: this.consumer, producer: this.producer } });
+    const data = {
+      id: this.pactDataService.getPactData().length + 1,  // Unique ID
+      consumer: this.consumer,
+      producer: this.producer,
+      pactFile: 'Generated Pact',
+      status: 'In Progress',
+      lastActivity: new Date().toLocaleString()
+    };
+
+    this.pactDataService.addPactData(data);
+    this.router.navigate(['/pact2']);
   }
 }

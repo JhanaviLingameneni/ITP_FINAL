@@ -1,0 +1,9 @@
+.status-success {
+    color: green;
+  }
+  .status-fail {
+    color: red;
+  }
+  .status-progress {
+    color: yellow;
+  }

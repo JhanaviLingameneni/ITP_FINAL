@@ -18,7 +18,6 @@ export class PiebarComponent {
 	  },
 	  data: [{
 		type: "doughnut",
-		yValueFormatString: "#,###.##'%'",
 		indexLabel: "{name}",
 		dataPoints: [
 		  { y: 10, name: "Passed", color:'#4CAF50' },
@@ -37,9 +36,6 @@ export class PiebarComponent {
 		axisX:{
 			title: "Runs"
 		},
-		axisY:{
-			title: "Percentage"
-		},
 		toolTip:  {
 			shared: true
 		},
@@ -55,9 +51,17 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 10, label: "Run1",color:'#4CAF50'},
-				{  y: 1, label: "Run2", color:'#4CAF50' },
-				{  y: 1, label: "Run3", color:'#4CAF50' }
+				{  y: 10, label: "Run1",color:'#4CAF50', name:"Passed"},
+				{  y: 4, label: "Run2", color:'#4CAF50',name:"Passed" },
+				{  y: 16, label: "Run3", color:'#4CAF50', name:"Passed" },
+				{  y: 15, label: "Run4", color:'#4CAF50', name:"Passed" },
+				{  y: 14, label: "Run5", color:'#4CAF50', name:"Passed" },
+				{  y: 6, label: "Run6", color:'#4CAF50' , name:"Passed"},
+				{  y: 16, label: "Run7", color:'#4CAF50' ,name:"Passed"},
+				{  y: 6, label: "Run8", color:'#4CAF50' , name:"Passed"},
+				{  y: 4, label: "Run9", color:'#4CAF50', name:"Passed" },
+				{  y: 7, label: "Run10", color:'#4CAF50', name:"Passed" },
+
 				
 			]
 		}, {
@@ -67,9 +71,19 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 4, label: "Run1", color:'#F44336'},
-				{  y: 0, label: "Run2" ,color:'#F44336'},
-				{  y: 36, label: "Run3", color:'#F44336' }
+				
+				{  y: 1, label: "Run1", color:'#F44336', name:"Failed" },
+				{  y: 0, label: "Run2", color:'#F44336', name:"Failed" },
+				{  y: 1, label: "Run3", color:'#F44336', name:"Failed" },
+				{  y: 1, label: "Run4", color:'#F44336', name:"Failed" },
+				{  y: 2, label: "Run5", color:'#F44336', name:"Failed" },
+				{  y: 4, label: "Run6", color:'#F44336', name:"Failed" },
+				{  y: 0, label: "Run7", color:'#F44336' , name:"Failed"},
+				{  y: 4, label: "Run8", color:'#F44336', name:"Failed" },
+				{  y: 16, label:"Run9", color:'#F44336', name:"Failed" },
+				{  y: 1, label: "Run10", color:'#F44336', name:"Failed" },
+				
+				
 			]
 		},
 		{
@@ -79,11 +93,20 @@ export class PiebarComponent {
 			indexLabelPlacement: "inside",
 			indexLabelFontColor: "white",
 			dataPoints: [
-				{  y: 16, label: "Run1", color:'#2196F3'},
-				{  y: 1, label: "Run2", color:'#2196F3' },
-				{  y: 126, label: "Run3" , color:'#2196F3'}
+				{  y: 1, label: "Run1", color:'#2196F3', name:'Skipped' },
+				{  y: 36, label: "Run2", color:'#2196F3', name:'Skipped' },
+				{  y: 126, label: "Run3", color:'#2196F3', name:'Skipped' },
+				{  y: 127, label: "Run4", color:'#2196F3', name:'Skipped' },
+				{  y: 127, label: "Run5", color:'#2196F3', name:'Skipped' },
+				{  y: 25, label: "Run6", color:'#2196F3', name:'Skipped' },
+				{  y: 0, label: "Run7", color:'#2196F3' ,name:'Skipped'},
+				{  y: 30, label: "Run8", color:'#2196F3' , name:'Skipped'},
+				{  y: 0, label: "Run9", color:'#2196F3', name:'Skipped' },
+				{  y: 0, label: "Run10", color:'#2196F3', name:'Skipped' },
+				
 			]
-		},
+		}
+		
 		
 		]
 	}	
