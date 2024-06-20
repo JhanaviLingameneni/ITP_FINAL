@@ -22,6 +22,7 @@ import { PiebarComponent } from './components/piebar/piebar.component';
 import { TabComponent } from './components/tab/tab.component';
 import { Micro2Component } from './components/micro2/micro2.component';
 import { Pact2Component } from './components/pact2/pact2.component';
+import { Pop2Component } from './components/pop2/pop2.component';
 
 
 
@@ -122,6 +123,10 @@ const routes: Routes = [
   {
     path:'pact2',
     component:Pact2Component
+  },
+  {
+    path:'pop2',
+    component:Pop2Component
   },
   {
     path: '', redirectTo: 'login', pathMatch: 'full'

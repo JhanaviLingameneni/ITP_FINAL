@@ -1,0 +1,10 @@
+
+<div mat-dialog-content>
+    <ng-container *ngIf="status !== 'Failed'; else errorTemplate">
+      <!-- Display the pact file data here -->
+      <pre>{{ pactData | json }}</pre>
+    </ng-container>
+    <ng-template #errorTemplate>
+      <p>Failed to load data</p>
+    </ng-template>
+  </div>
