@@ -146,5 +146,14 @@
     font-size: 8px;
 
   }
+  .st1{
+    font-size: 13px;
+    
+   
+  }
+  .b1{
+    filter:blur(1px);
+    opacity:0.5;
+  }
 
 
