@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -8,14 +8,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrl: './pop2.component.css'
 })
 export class Pop2Component {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    public dialogRef: MatDialogRef<Pop2Component>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
-  get status() {
-    return this.data.status;
-  }
-
-  get pactData() {
-    return this.data.pactData;
+  onClose(): void {
+    this.dialogRef.close();
   }
 
 

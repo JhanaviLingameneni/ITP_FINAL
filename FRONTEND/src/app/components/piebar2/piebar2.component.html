@@ -1,0 +1,24 @@
+
+<div class="container">
+<mat-card class="chart-card1">
+    <mat-card-header>
+      <mat-card-title>Test Results</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+<div>
+    <canvasjs-chart [options]="pieChartOptions" style="height: 300px; width: 100%;"></canvasjs-chart>
+</div>  
+</mat-card-content>
+</mat-card>
+  
+<mat-card class="chart-card1">
+    <mat-card-header>
+      <mat-card-title>Test Result-Past 10 runs</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+    <canvasjs-chart [options]="barChartOptions" style="height: 300px; width: 100%;"></canvasjs-chart>
+</div> 
+</mat-card-content>
+</mat-card>
+</div>

@@ -1,10 +1,8 @@
 
 <div mat-dialog-content>
-    <ng-container *ngIf="status !== 'Failed'; else errorTemplate">
-      <!-- Display the pact file data here -->
-      <pre>{{ pactData | json }}</pre>
-    </ng-container>
-    <ng-template #errorTemplate>
-      <p>Failed to load data</p>
-    </ng-template>
+    <p>Status: {{ data.status }}</p>
+    <pre>{{ data.pactData | json }}</pre>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onClose()">Close</button>
   </div>

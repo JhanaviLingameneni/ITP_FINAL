@@ -11,8 +11,8 @@ import { switchMap } from 'rxjs/operators';
   templateUrl: './pact2.component.html',
   styleUrl: './pact2.component.css'
 })
-export class Pact2Component {
-  displayedColumns: string[] = ['consumer', 'provider', 'pactFile', 'status', 'lastActivity'];
+export class Pact2Component implements OnInit {
+  displayedColumns: string[] = ['consumer', 'producer', 'pactFile', 'status', 'lastActivity'];
   dataSource: any[] = [];
 
   constructor(private pactDataService: PactDataService, public dialog: MatDialog, private router:Router) {}
@@ -25,30 +25,38 @@ export class Pact2Component {
   loadPactData() {
     this.dataSource = this.pactDataService.getPactData();
   }
+  logOut() :void{
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
 
   checkPactStatus() {
-    this.dataSource.forEach((pact) => {
+    this.dataSource.forEach(pact => {
       if (pact.status === 'In Progress') {
-        this.pactDataService.getPactResult(pact).subscribe(result => {
+        this.pactDataService.getPactResult(pact.id).subscribe(result => {
           if (result.success) {
             pact.status = 'Success';
           } else if (result.fail) {
             pact.status = 'Fail';
           }
-          // Call change detection or refresh dataSource if necessary
-          this.dataSource = [...this.dataSource]; // Trigger change detection
+          this.updateDataSource();
         });
       }
     });
   }
 
+  updateDataSource() {
+    this.dataSource = [...this.dataSource];
+  }
+
   viewPactResult(pact: any, event: Event) {
     event.preventDefault(); // Prevent the default action of the click event
     console.log('Execution started');
+
     // Use RxJS timer to delay the execution
     timer(3000) // Adjust the delay as needed (3000 milliseconds = 3 seconds)
       .pipe(
-        switchMap(() => this.pactDataService.getPactData())
+        switchMap(() => this.pactDataService.getPactResult(pact.id))
       )
       .subscribe(
         (data) => {
@@ -59,27 +67,23 @@ export class Pact2Component {
               data: { status: 'Success', pactData: data }
             });
           } else {
-            pact.status = 'Failed';
+            pact.status = 'Fail';
             this.dialog.open(Pop2Component, {
               data: { status: 'Failed', pactData: data }
             });
           }
           // Update the pact status in the data source
-          this.dataSource = [...this.dataSource]; // Trigger change detection
+          this.updateDataSource(); // Trigger change detection
         },
         (error) => {
           console.error('Error:', error);
-          pact.status = 'Failed';
+          pact.status = 'Fail';
           this.dialog.open(Pop2Component, {
-            data: { status: 'Failed' }
+            data: { status: 'Failed'}
           });
           // Update the pact status in the data source
-          this.dataSource = [...this.dataSource]; // Trigger change detection
+          this.updateDataSource(); // Trigger change detection
         }
       );
-  }
-  logOut() :void{
-    sessionStorage.clear();
-    this.router.navigate(['login']);
   }
 }
