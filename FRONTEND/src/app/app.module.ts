@@ -56,6 +56,8 @@ import { Pact2Component } from './components/pact2/pact2.component';
 import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
 import { Pop2Component } from './components/pop2/pop2.component';
 import { Piebar2Component } from './components/piebar2/piebar2.component';
+import { Home2Component } from './components/home2/home2.component';
+import { Popup2Component } from './components/popup2/popup2.component';
 
 const dbConfig: DBConfig = {
   name: 'PactDB',
@@ -105,7 +107,9 @@ const dbConfig: DBConfig = {
     Micro2Component,
     Pact2Component,
     Pop2Component,
-    Piebar2Component
+    Piebar2Component,
+    Home2Component,
+    Popup2Component
   ],
   imports: [
     BrowserModule,

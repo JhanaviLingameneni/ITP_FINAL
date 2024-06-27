@@ -7,10 +7,6 @@ import { TestResultsService } from './test-results.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-
-
-
-
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
@@ -18,7 +14,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class PopupComponent implements OnInit {
   @Output() runTest = new EventEmitter<{ url: string, spec: string, env: string }>();
-  
   url: string = '';
   spec: string = '';
   env: string='';

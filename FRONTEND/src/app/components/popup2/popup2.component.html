@@ -1,0 +1,31 @@
+<mat-card class="form-card">
+    <mat-card-title class="mat-card-title">Provide Env and spec details</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" class="test-form">
+        <mat-form-field class="mat-form-field" appearance="outline">
+          <input class="input-form-field" list="urlOptions" matInput placeholder="URL" formControlName="url">
+          <datalist id="urlOptions">
+            <option value="https://example.cypress.io/todo"></option>
+          </datalist>
+        </mat-form-field>
+        <mat-form-field class="mat-form-field" appearance="outline">
+          <input class="input-form-field" list="specOptions"  matInput placeholder="SPEC" formControlName="spec">
+          <datalist id="specOptions">
+            <option value="cypress/e2e/1-getting-started/"></option>
+          </datalist>
+        </mat-form-field>
+        <mat-form-field class="mat-form-field" appearance="outline">
+          <input class="input-form-field" list="env1Options" matInput placeholder="ENV" formControlName="env">
+          <datalist id="env1Options">
+            <option value="grepTags=@fvt, XC1_NEW_ORG_EMAIL=stability@test.com"></option>
+          </datalist>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="onNoClick()" class="button-color1">Cancel</button>
+      <button mat-button (click)="runTest()" [disabled]="form.invalid" class="button-color2" >Run Test</button>
+    </mat-card-actions>
+    <div *ngIf="isLoading" class="loading-spinner"></div>
+    <ngx-spinner  size="medium" color="#fff" type="ball-scale-multiple"></ngx-spinner>
+  </mat-card>
