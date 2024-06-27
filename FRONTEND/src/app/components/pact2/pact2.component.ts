@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Popup2Component } from '../popup2/popup2.component';
+import { PactPopUpComponent } from '../pact-pop-up/pact-pop-up.component';
+
 
 @Component({
   selector: 'app-pact2',
@@ -63,18 +65,18 @@ export class Pact2Component implements OnInit {
                     console.log('Data received:', data);
 
                     if (data.status === 'success') { // Check the correct property in data
-                        this.dialog.open(Popup2Component, {
+                        this.dialog.open(PactPopUpComponent, {
                             data: { status: 'Success', pactData: data }
                         });
                     } else {
-                        this.dialog.open(Popup2Component, {
+                        this.dialog.open(PactPopUpComponent, {
                             data: { status: 'Failed',pactData:data }
                         });
                     }
                 },
                 (error) => {
                     console.error('Error:', error);
-                    this.dialog.open(Popup2Component, {
+                    this.dialog.open(PactPopUpComponent, {
                         data: { status: 'Failed' }
                     });
                 }
