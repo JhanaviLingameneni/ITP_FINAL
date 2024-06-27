@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { Popup2Component } from '../popup2/popup2.component';
+import { TableDataService } from './table-data.service';
 
 export interface TableData {
   url: string;
@@ -28,11 +29,24 @@ const ELEMENT_DATA: TableData[] = [
 })
 
 
-export class Home2Component {
+export class Home2Component implements OnInit {
   displayedColumns: string[] = ['url', 'spec', 'env', 'status', 'lastActivity'];
   dataSource: TableData[] = [];
+  ngOnInit(): void {
+    this.loadTableData();
+  }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,  private tableDataService: TableDataService) {}
+  loadTableData(): void {
+    const savedData = this.tableDataService.getTableData();
+    if (savedData.length) {
+      this.dataSource = savedData;
+    }
+  }
+
+  saveTableData(): void {
+    this.tableDataService.setTableData(this.dataSource);
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Popup2Component, {
@@ -66,7 +80,9 @@ export class Home2Component {
 
     this.dataSource.push(newRow);
     this.dataSource = [...this.dataSource]; // Refresh the table
+    this.saveTableData();
   }
+  
   
 
 }

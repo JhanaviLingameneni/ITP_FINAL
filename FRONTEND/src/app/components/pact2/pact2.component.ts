@@ -22,7 +22,7 @@ export class Pact2Component implements OnInit {
 
   ngOnInit(): void {
     this.loadPactData();
-    this.checkPactStatus();
+   
   }
 
   loadPactData() {
@@ -33,53 +33,42 @@ export class Pact2Component implements OnInit {
     this.router.navigate(['login']);
   }
 
-  checkPactStatus() {
-    this.dataSource.forEach(pact => {
-      if (pact.status === 'In Progress') {
-        this.pactDataService.getPactResult(pact.id).subscribe(result => {
-          if (result.success) {
-            pact.status = 'Success';
-          } else if (result.fail) {
-            pact.status = 'Fail';
-          }
-          this.updateDataSource();
-        });
-      }
-    });
-  }
+  
 
   updateDataSource() {
     this.dataSource = [...this.dataSource];
   }
 
   viewPactResult(pact: any, event: Event) {
-    console.log('Execution started');
+    event.preventDefault(); // Prevent the default action of the click event
+  console.log('Execution started');
 
-        // Use RxJS timer to delay the execution
-        timer(3000) // Adjust the delay as needed (3000 milliseconds = 3 seconds)
-            .pipe(
-                switchMap(() => this.pactDataService.getPactData())
-            )
-            .subscribe(
-                (data) => {
-                    console.log('Data received:', data);
-
-                    if (data.status === 'success') { // Check the correct property in data
-                        this.dialog.open(PactPopUpComponent, {
-                            data: { status: 'Success', pactData: data }
-                        });
-                    } else {
-                        this.dialog.open(PactPopUpComponent, {
-                            data: { status: 'Failed',pactData:data }
-                        });
-                    }
-                },
-                (error) => {
-                    console.error('Error:', error);
-                    this.dialog.open(PactPopUpComponent, {
-                        data: { status: 'Failed' }
-                    });
-                }
-            );
+  this.pactDataService.getPactResult(pact.id).subscribe(
+    (data) => {
+      console.log('Data received:', data);
+      if (data.status === 'success') { // Check the correct property in data
+        pact.status = 'Success';
+        this.dialog.open(Pop2Component, {
+          data: { status: 'Success', pactData: data }
+        });
+      } else {
+        pact.status = 'Failed';
+        this.dialog.open(Pop2Component, {
+          data: { status: 'Failed', pactData: data }
+        });
+      }
+      // Update the pact status in the data source
+      this.updateDataSource(); // Trigger change detection
+    },
+    (error) => {
+      console.error('Error:', error);
+      pact.status = 'Failed';
+      this.dialog.open(Pop2Component, {
+        data: { status: 'Failed', pactData: error.error || error } // Pass error response data
+      });
+      // Update the pact status in the data source
+      this.updateDataSource(); // Trigger change detection
+    }
+  );
   }
 }
